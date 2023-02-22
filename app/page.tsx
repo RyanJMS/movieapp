@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import Movie from "./components/movie";
-
+import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
   title: string;
   id: number;
   poster_path: string;
-  key: number;
   release_date: string;
 }
 
@@ -19,8 +18,8 @@ export default async function Home() {
   const res = await data.json();
 
   return (
-    <main>
-      <div className="grid gap-16 grid-cols-fluid">
+    <main className="main">
+      <div className="grid gap-16 grid-cols-fluid mt-6">
         {res.results.map((movie: Props) => (
           <Movie
             key={movie.id}

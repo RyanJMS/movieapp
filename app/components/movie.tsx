@@ -11,18 +11,12 @@ interface Movie {
 
 const imagePath = "https://image.tmdb.org/t/p/original";
 
-export default function Movie({
-  id,
-  title,
-  poster_path,
-  key,
-  release_date,
-}: Movie) {
+export default function Movie({ id, title, poster_path, release_date }: Movie) {
   return (
-    <div key={id}>
+    <div className="text-center mx-5 leading-10" key={id}>
       <h1>{title}</h1>
-      <h2>{release_date}</h2>
-      <Link href={`/asd`}>
+      <h2 className="mb-5">{release_date}</h2>
+      <Link href={`/${id}`}>
         <Image
           src={imagePath + poster_path}
           alt={title}
