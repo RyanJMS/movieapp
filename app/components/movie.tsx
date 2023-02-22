@@ -13,8 +13,8 @@ const imagePath = "https://image.tmdb.org/t/p/original";
 
 export default function Movie({ id, title, poster_path, release_date }: Movie) {
   return (
-    <div className="text-center mx-5 leading-10" key={id}>
-      <h1>{title}</h1>
+    <div className="text-center mx-4 container" key={id}>
+      <h1 className="truncate">{title}</h1>
       <h2 className="mb-5">{release_date}</h2>
       <Link href={`/${id}`}>
         <Image
