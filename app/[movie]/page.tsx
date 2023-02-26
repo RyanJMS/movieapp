@@ -21,11 +21,20 @@ export default async function MovieDetail({ params }: Params) {
       <h2
         className={
           res.status === "Released"
-            ? `text-sm bg-green-600 inline-block my-2 px-2 rounded-md`
-            : `text-sm bg-red-600 inline-block my-2 px-2 rounded-md`
+            ? `text-sm bg-green-600 inline-block my-2 mx-2 px-2 rounded-md`
+            : `text-sm bg-red-600 inline-block my-2 mx-2 px-2 rounded-md`
         }
       >
         {res.status}
+      </h2>
+      <h2
+        className={
+          res.adult === false
+            ? `text-sm bg-green-600 inline-block my-2 px-2 mx-2 rounded-md`
+            : `text-sm bg-red-600 inline-block my-2 mx-2 px-2 rounded-md`
+        }
+      >
+        {res.adult === true ? "Adults Only" : "Family Friendly"}
       </h2>
       <div className="flex justify-center max-w-500 mx-auto">
         {res.genres.map((genre: any) => {
@@ -50,15 +59,29 @@ export default async function MovieDetail({ params }: Params) {
             <p className="text-lg text-left">{res.overview}</p>
           </div>
           <div className="p-4">
-            <div className="grid grid-cols-1 fluid sm:grid-cols-1">
+            <div className="grid grid-cols-1 fluid sm:grid-cols-1 ">
               <div>
-                <h2 className="text-xl font-bold">Heading 1</h2>
+                <h2 className="text-xl font-bold leading-10">
+                  Budget: ${res.budget.toLocaleString()}
+                </h2>
               </div>
               <div>
-                <h2 className="text-xl font-bold">Heading 2</h2>
+                <h2 className="text-xl font-bold leading-10">
+                  Revenue: ${res.revenue.toLocaleString()}
+                </h2>
               </div>
               <div>
-                <h2 className="text-xl font-bold">Heading 3</h2>
+                <h2 className={"text-xl font-bold leading-10"}>
+                  Score:{" "}
+                  <span
+                    className={
+                      res.vote_average > 5 ? " text-green-600" : " text-red-600"
+                    }
+                  >
+                    {res.vote_average}{" "}
+                  </span>
+                  / 10
+                </h2>
               </div>
             </div>
           </div>
