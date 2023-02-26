@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { Inter } from "@next/font/google";
 import Movie from "./components/movie";
 import "./globals.css";
+import { Search } from "./components/search";
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
@@ -19,17 +19,7 @@ export default async function Home() {
 
   return (
     <main className="main">
-      <div className="grid gap-16 grid-cols-fluid mt-6">
-        {res.results.map((movie: Props) => (
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            poster_path={movie.poster_path}
-            release_date={movie.release_date}
-          />
-        ))}
-      </div>
+      <Search results={res} />
     </main>
   );
 }
