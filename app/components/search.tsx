@@ -23,7 +23,7 @@ export function Search({ results }: any) {
   const handleSearch = async () => {
     if (query !== null || query !== undefined || query !== "") {
       const data = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${query}&page=1&include_adult=true`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
       );
       const res = await data.json();
       setSearchResults(res);
@@ -39,6 +39,8 @@ export function Search({ results }: any) {
   return (
     <>
       <input
+        aria-label="Search for movies"
+        id="search"
         type="text"
         value={query}
         placeholder="Search for a movie"
@@ -70,7 +72,7 @@ export function Search({ results }: any) {
           })}
         </div>
       ) : (
-        <div className="grid gap-16 grid-cols-fluid mt-6">
+        <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
           {popular?.results.map((movie: any) => {
             if (movie.poster_path !== null) {
               return (
@@ -87,7 +89,7 @@ export function Search({ results }: any) {
         </div>
       )}
       {query === "" && (
-        <div className="grid gap-16 grid-cols-fluid mt-6">
+        <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
           {popular?.results.map((movie: any) => {
             if (movie.poster_path !== null) {
               return (
