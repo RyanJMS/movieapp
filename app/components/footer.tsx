@@ -1,7 +1,9 @@
 export default function Footer() {
   return (
     <>
-      <h1>Footer</h1>
+      <p className="text-center pb-6 pt-6">
+        &copy; {new Date().getFullYear()} Ryan Schock{" "}
+      </p>
     </>
   );
 }
