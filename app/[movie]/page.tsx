@@ -44,12 +44,9 @@ export default async function MovieDetail({ params }: Props) {
         height={1000}
         alt={res?.title}
       />
+
       <div className="container mx-auto p-2">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-4">
-            <h2 className="text-xl mb-4 text-left">Overview:</h2>
-            <p className="text-lg text-left">{res?.overview}</p>
-          </div>
           <div className="p-4">
             <div className="grid grid-cols-1 fluid sm:grid-cols-1 ">
               <div>
@@ -72,12 +69,15 @@ export default async function MovieDetail({ params }: Props) {
                         : " text-red-600"
                     }
                   >
-                    {res?.vote_average}{" "}
+                    {res?.vote_average?.toFixed(1)} / 10
                   </span>
-                  / 10
                 </h2>
               </div>
             </div>
+          </div>
+          <div className="p-4">
+            <h2 className="text-xl font-bold mb-4 text-left">Overview:</h2>
+            <p className="text-lg text-left">{res?.overview}</p>
           </div>
         </div>
       </div>

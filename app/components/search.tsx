@@ -88,23 +88,6 @@ export function Search({ results }: any) {
           })}
         </div>
       )}
-      {query === "" && (
-        <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
-          {popular?.results.map((movie: any) => {
-            if (movie.poster_path !== null) {
-              return (
-                <Movie
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  poster_path={movie.poster_path}
-                  release_date={movie.release_date}
-                />
-              );
-            }
-          })}
-        </div>
-      )}
     </>
   );
 }

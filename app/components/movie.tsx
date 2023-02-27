@@ -18,6 +18,7 @@ export default function Movie({ id, title, poster_path, release_date }: Movie) {
       <h2 className="mb-5">{release_date}</h2>
       <Link href={`/${id}`}>
         <Image
+          priority={true}
           src={imagePath + poster_path}
           alt={title}
           width={350}
