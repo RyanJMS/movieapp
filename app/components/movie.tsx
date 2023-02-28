@@ -24,12 +24,14 @@ export default function Movie({ id, title, poster_path, release_date }: Movie) {
           }}
         >
           <Image
-            priority={true}
             src={imagePath + poster_path}
             alt={title}
             width={350}
             height={450}
             style={{ width: 400, height: 450 }}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={`https://image.tmdb.org/t/p/w92/${poster_path}`}
           />
         </div>
       </Link>

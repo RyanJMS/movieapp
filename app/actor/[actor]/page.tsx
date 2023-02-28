@@ -1,6 +1,7 @@
 import Movie from "../../components/movie";
 import Back from "../../components/back";
-
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 interface Props {
   params: any;
 }
@@ -18,15 +19,17 @@ export default async function Actor({ params }: Props) {
   );
   const filmRes = await filmData.json();
 
+  console.log(filmRes);
   return (
     <div>
+      <Navbar />
       <h1 className="text-2xl mt-4 mb-4 text-center">
         {actorRes?.results[0].name}
       </h1>
       <Back />
-      <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6">
+      <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6">
         {filmRes.cast.map((movie: any) => {
-          if (movie.poster_path !== null) {
+          if (movie.poster_path && movie.name !== null) {
             return (
               <Movie
                 key={movie.id}
@@ -39,6 +42,7 @@ export default async function Actor({ params }: Props) {
           }
         })}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -22,12 +22,14 @@ export default function Cast({ id, name, profile_path, character }: Cast) {
           }}
         >
           <Image
-            priority={true}
             src={imagePath + profile_path}
             alt={name}
             width={350}
             height={450}
             style={{ width: 400, height: 450 }}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={`https://image.tmdb.org/t/p/w92/${profile_path}`}
           />
         </div>
       </Link>

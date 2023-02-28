@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Cast from "../components/cast";
 import Back from "../components/back";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 interface Props {
   params: any;
 }
@@ -21,6 +23,7 @@ export default async function MovieDetail({ params }: Props) {
 
   return (
     <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
+      <Navbar />
       <Back />
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
@@ -52,11 +55,18 @@ export default async function MovieDetail({ params }: Props) {
           }}
         >
           <Image
-            src={imagePath + res?.backdrop_path}
+            src={
+              res?.backdrop_path !== null
+                ? imagePath + res?.backdrop_path
+                : imagePath + res?.poster_path
+            }
             className="my-6 mx-auto p-2"
             width={1000}
             height={1000}
             alt={res?.title}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={`https://image.tmdb.org/t/p/w92/${res?.backdrop_path}`}
           />
         </div>
 
@@ -98,7 +108,7 @@ export default async function MovieDetail({ params }: Props) {
           <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: any) => {
-                if (actor.poster_path !== null) {
+                if (actor.profile_path !== null) {
                   return (
                     <Cast
                       key={actor.id}
@@ -114,6 +124,7 @@ export default async function MovieDetail({ params }: Props) {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
