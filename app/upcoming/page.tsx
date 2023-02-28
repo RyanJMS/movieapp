@@ -16,6 +16,7 @@ export default async function Upcoming() {
           if (res.poster_path !== null) {
             return (
               <Movie
+                media_type={movie.media_type}
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
