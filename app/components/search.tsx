@@ -28,6 +28,7 @@ export function Search({ results }: any) {
         `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
       );
       const res = await data.json();
+
       setSearchResults(res);
       console.log(res);
     }
@@ -60,17 +61,18 @@ export function Search({ results }: any) {
       />
       {searchResults ? (
         <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6">
-          {searchResults?.results.map((data: any) => {
-            return (
-              <>
-                <div
-                  className={
-                    searchResults?.total_results === 1
-                      ? "flex flex-center justify-center"
-                      : ""
-                  }
-                >
-                  {data.poster_path !== null && data.profile_path !== null && (
+          {searchResults?.results
+            .filter((data: any) => data.poster_path !== null)
+            .map((data: any) => {
+              return (
+                <>
+                  <div
+                    className={
+                      searchResults?.total_results === 1
+                        ? "flex flex-center justify-center"
+                        : ""
+                    }
+                  >
                     <div>
                       {data.media_type === "movie" && (
                         <Movie
@@ -101,12 +103,11 @@ export function Search({ results }: any) {
                           profile_path={data.profile_path}
                         />
                       )}
-                    </div>
-                  )}{" "}
-                </div>
-              </>
-            );
-          })}
+                    </div>{" "}
+                  </div>
+                </>
+              );
+            })}
         </div>
       ) : (
         <div className="grid gap-16 container mx-auto grid-cols-fluid mt-6 mb-6">
