@@ -91,7 +91,7 @@ export default async function MovieDetail({ params }: Props) {
           </div>
           <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
             {castRes?.cast
-              .map((actor: any) => {
+              ?.map((actor: any) => {
                 if (actor.poster_path !== null) {
                   return (
                     <Cast
