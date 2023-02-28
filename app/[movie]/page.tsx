@@ -105,7 +105,7 @@ export default async function MovieDetail({ params }: Props) {
               <p className="text-lg text-left">{res?.overview}</p>
             </div>
           </div>
-          <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
+          <div className="grid gap-16 mx-auto w-full grid-cols-fluid mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: any) => {
                 if (actor.profile_path !== null) {
