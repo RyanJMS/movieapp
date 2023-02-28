@@ -20,7 +20,7 @@ export default function Movie({
   media_type,
 }: Movie) {
   return (
-    <div className="text-center mx-4 container" key={id}>
+    <div className="text-center mx-4" key={id}>
       <h1 className="truncate mb-3">{title}</h1>
       <h2 className="mb-5">{release_date}</h2>
       <Link href={`/${id}`}>
@@ -35,7 +35,6 @@ export default function Movie({
             alt={title}
             width={350}
             height={450}
-            style={{ width: 400, height: 450 }}
             loading="lazy"
             placeholder="blur"
             blurDataURL={`https://image.tmdb.org/t/p/w92/${poster_path}`}

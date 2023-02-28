@@ -11,8 +11,9 @@ type SearchResult = {
     poster_path: string,
     release_date: string
   ];
+  total_results: number;
   total_pages?: number;
-  total_results?: number;
+
   page?: number;
 };
 
@@ -57,19 +58,21 @@ export function Search({ results }: any) {
       />
       {searchResults ? (
         <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6">
-          {searchResults.results.map((movie: any) => {
-            if (movie.poster_path !== null) {
-              return (
-                <Movie
-                  media_type={movie.media_type}
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  poster_path={movie.poster_path}
-                  release_date={movie.release_date}
-                />
-              );
-            }
+          {searchResults?.results.map((movie: any) => {
+            return (
+              <>
+                <div>
+                  <Movie
+                    media_type={movie.media_type}
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    poster_path={movie.poster_path}
+                    release_date={movie.release_date}
+                  />
+                </div>
+              </>
+            );
           })}
         </div>
       ) : (
