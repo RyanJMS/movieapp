@@ -14,7 +14,7 @@ const imagePath = "https://image.tmdb.org/t/p/original";
 export default function Cast({ id, name, profile_path, character }: Cast) {
   return (
     <div className="text-center mx-4 container" key={id}>
-      <Link href={`/${id}`}>
+      <Link href={`/actor/${name}`}>
         <Image
           priority={true}
           src={imagePath + profile_path}

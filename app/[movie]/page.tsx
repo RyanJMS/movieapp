@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Cast from "../components/cast";
-
+import Back from "../components/back";
 interface Props {
   params: any;
 }
@@ -22,12 +22,7 @@ export default async function MovieDetail({ params }: Props) {
 
   return (
     <div className="leading-10 mt-10 mb-10 w-full">
-      <Link
-        className=" text-left w-full px-4 rounded-md hover:bg-slate-400"
-        href="/"
-      >
-        Back
-      </Link>
+      <Back />
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
