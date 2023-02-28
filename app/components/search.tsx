@@ -1,7 +1,8 @@
 "use client";
 
-import Movie from "../components/movie";
-
+import Movie from "./movie";
+import Show from "./show";
+import Cast from "./cast";
 import { useState, useEffect } from "react";
 
 type SearchResult = {
@@ -24,10 +25,11 @@ export function Search({ results }: any) {
   const handleSearch = async () => {
     if (query !== null || query !== undefined || query !== "") {
       const data = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
       );
       const res = await data.json();
       setSearchResults(res);
+      console.log(res);
     }
   };
 
@@ -58,18 +60,49 @@ export function Search({ results }: any) {
       />
       {searchResults ? (
         <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6">
-          {searchResults?.results.map((movie: any) => {
+          {searchResults?.results.map((data: any) => {
             return (
               <>
-                <div>
-                  <Movie
-                    media_type={movie.media_type}
-                    key={movie.id}
-                    id={movie.id}
-                    title={movie.title}
-                    poster_path={movie.poster_path}
-                    release_date={movie.release_date}
-                  />
+                <div
+                  className={
+                    searchResults?.total_results === 1
+                      ? "flex flex-center justify-center"
+                      : ""
+                  }
+                >
+                  {data.poster_path !== null && data.profile_path !== null && (
+                    <div>
+                      {data.media_type === "movie" && (
+                        <Movie
+                          media_type={data.media_type}
+                          key={data.id}
+                          id={data.id}
+                          title={data.title}
+                          poster_path={data.poster_path}
+                          release_date={data.release_date}
+                        />
+                      )}
+                      {data.media_type === "tv" && (
+                        <Show
+                          media_type={data.media_type}
+                          key={data.id}
+                          id={data.id}
+                          name={data.name}
+                          poster_path={data.poster_path}
+                          first_air_date={data.first_air_date}
+                        />
+                      )}
+                      {data.media_type === "person" && (
+                        <Cast
+                          media_type={data.media_type}
+                          key={data.id}
+                          id={data.id}
+                          name={data.name}
+                          profile_path={data.profile_path}
+                        />
+                      )}
+                    </div>
+                  )}{" "}
                 </div>
               </>
             );

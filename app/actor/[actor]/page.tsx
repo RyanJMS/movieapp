@@ -52,7 +52,7 @@ export default async function Actor({ params }: Props) {
                     id={data.id}
                     name={data.name}
                     poster_path={data.poster_path}
-                    release_date={data.release_date}
+                    first_air_date={data.first_air_date}
                   />
                 );
               }

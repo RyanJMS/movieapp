@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-
 interface Movie {
   id: number;
   title: string;
@@ -35,9 +34,13 @@ export default function Movie({
             alt={title}
             width={350}
             height={450}
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL={`https://image.tmdb.org/t/p/w92/${poster_path}`}
+            priority={true}
+            style={{
+              width: 400,
+              height: 450,
+              borderRadius: "10%",
+              overflow: "hidden",
+            }}
           />
         </div>
       </Link>

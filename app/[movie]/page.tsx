@@ -64,7 +64,7 @@ export default async function MovieDetail({ params }: Props) {
             width={1000}
             height={1000}
             alt={res?.title}
-            loading="lazy"
+            loading="eager"
             placeholder="blur"
             blurDataURL={`https://image.tmdb.org/t/p/w92/${res?.backdrop_path}`}
           />
@@ -116,6 +116,7 @@ export default async function MovieDetail({ params }: Props) {
                       name={actor.name}
                       profile_path={actor.profile_path}
                       character={actor.character}
+                      media_type={actor.media_type}
                     />
                   );
                 }

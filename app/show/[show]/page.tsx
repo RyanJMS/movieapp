@@ -111,6 +111,7 @@ export default async function ShowDetail({ params }: Props) {
                 if (actor.profile_path !== null) {
                   return (
                     <Cast
+                      media_type={actor.media_type}
                       key={actor.id}
                       id={actor.id}
                       name={actor.name}
