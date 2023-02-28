@@ -61,6 +61,7 @@ export function Search({ results }: any) {
             if (movie.poster_path !== null) {
               return (
                 <Movie
+                  media_type={movie.media_type}
                   key={movie.id}
                   id={movie.id}
                   title={movie.title}
@@ -77,6 +78,7 @@ export function Search({ results }: any) {
             if (movie.poster_path !== null) {
               return (
                 <Movie
+                  media_type={movie.media_type}
                   key={movie.id}
                   id={movie.id}
                   title={movie.title}

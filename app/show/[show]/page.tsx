@@ -1,37 +1,39 @@
 import Image from "next/image";
-import Cast from "../components/cast";
-import Back from "../components/back";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Cast from "../../components/cast";
+import Back from "../../components/back";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 interface Props {
   params: any;
 }
 
-export default async function MovieDetail({ params }: Props) {
+export default async function ShowDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}?api_key=${process.env.API_KEY}`,
+    `https://api.themoviedb.org/3/tv/${params.show}?api_key=${process.env.API_KEY}`,
     { next: { revalidate: 0 } }
   );
   const res = await data.json();
 
   const castData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}/credits?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/tv/${params.show}/credits?api_key=${process.env.API_KEY}&language=en-US`
   );
   const castRes = await castData.json();
-
+  console.log(res);
+  console.log(params);
   return (
     <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
       <Navbar />
       <Back />
       <div className="text-center">
-        <h2 className="text-2xl mb-4">{res?.title}</h2>
-        <h2 className="text-lg">Release Date: {res?.release_date}</h2>
-        <h2>Runtime: {res?.runtime} minutes</h2>
+        <h2 className="text-2xl mb-4">{res.name}</h2>
+        <h2>
+          Seasons: {res.number_of_seasons} Episodes: {res.number_of_episodes}
+        </h2>
         <h2
           className={
-            res?.status === "Released"
+            res?.status === "Returning Series"
               ? `text-sm bg-green-600 inline-block my-2 mx-2 px-2 rounded-md`
               : `text-sm bg-red-600 inline-block my-2 mx-2 px-2 rounded-md`
           }
@@ -75,13 +77,11 @@ export default async function MovieDetail({ params }: Props) {
             <div className="p-4">
               <div className="grid grid-cols-1 fluid sm:grid-cols-1 ">
                 <div>
-                  <h2 className="text-xl  leading-10">
-                    Budget: ${res?.budget?.toLocaleString()}
-                  </h2>
+                  <h2 className="text-lg">Debut: {res.first_air_date}</h2>
                 </div>
                 <div>
-                  <h2 className="text-xl  leading-10">
-                    Revenue: ${res?.revenue?.toLocaleString()}
+                  <h2 className="text-lg">
+                    Most Recent Episode: {res.last_air_date}
                   </h2>
                 </div>
                 <div>

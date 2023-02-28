@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-interface Movie {
+interface ShowProps {
   id: number;
-  title: string;
+  name: string;
   key: number;
   poster_path: string;
   release_date: string;
@@ -12,18 +12,18 @@ interface Movie {
 
 const imagePath = "https://image.tmdb.org/t/p/original";
 
-export default function Movie({
+export default function Show({
   id,
-  title,
+  name,
   poster_path,
   release_date,
   media_type,
-}: Movie) {
+}: ShowProps) {
   return (
     <div className="text-center mx-4 container" key={id}>
-      <h1 className="truncate mb-3">{title}</h1>
+      <h1 className="truncate mb-3">{name}</h1>
       <h2 className="mb-5">{release_date}</h2>
-      <Link href={`/${id}`}>
+      <Link href={`/show/${id}`}>
         <div
           style={{
             borderRadius: "10%",
@@ -32,7 +32,7 @@ export default function Movie({
         >
           <Image
             src={imagePath + poster_path}
-            alt={title}
+            alt={name}
             width={350}
             height={450}
             style={{ width: 400, height: 450 }}

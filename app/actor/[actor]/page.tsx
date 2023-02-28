@@ -2,6 +2,7 @@ import Movie from "../../components/movie";
 import Back from "../../components/back";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import Show from "../../components/show";
 interface Props {
   params: any;
 }
@@ -18,8 +19,6 @@ export default async function Actor({ params }: Props) {
     `
   );
   const filmRes = await filmData.json();
-
-  console.log(filmRes);
   return (
     <div>
       <Navbar />
@@ -28,17 +27,36 @@ export default async function Actor({ params }: Props) {
       </h1>
       <Back />
       <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6">
-        {filmRes.cast.map((movie: any) => {
-          if (movie.poster_path && movie.name !== null) {
-            return (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                poster_path={movie.poster_path}
-                release_date={movie.release_date}
-              />
-            );
+        {filmRes.cast.map((data: any) => {
+          if (data.poster_path && data.name !== null) {
+            {
+              if (data.media_type === "movie") {
+                return (
+                  <Movie
+                    media_type={data.media_type}
+                    key={data.id}
+                    id={data.id}
+                    title={data.title}
+                    poster_path={data.poster_path}
+                    release_date={data.release_date}
+                  />
+                );
+              }
+            }
+            {
+              if (data.media_type === "tv") {
+                return (
+                  <Show
+                    media_type={data.media_type}
+                    key={data.id}
+                    id={data.id}
+                    name={data.name}
+                    poster_path={data.poster_path}
+                    release_date={data.release_date}
+                  />
+                );
+              }
+            }
           }
         })}
       </div>
