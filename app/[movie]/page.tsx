@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Cast from "../components/cast";
 import Back from "../components/back";
 interface Props {
@@ -21,7 +20,7 @@ export default async function MovieDetail({ params }: Props) {
   const castRes = await castData.json();
 
   return (
-    <div className="leading-10 mt-10 mb-10 w-full">
+    <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
       <Back />
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
@@ -46,13 +45,20 @@ export default async function MovieDetail({ params }: Props) {
               );
             })}
         </div>
-        <Image
-          src={imagePath + res?.backdrop_path}
-          className="my-12 mx-auto p-2"
-          width={1000}
-          height={1000}
-          alt={res?.title}
-        />
+        <div
+          style={{
+            borderRadius: "15%",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src={imagePath + res?.backdrop_path}
+            className="my-6 mx-auto p-2"
+            width={1000}
+            height={1000}
+            alt={res?.title}
+          />
+        </div>
 
         <div className="container mx-auto p-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

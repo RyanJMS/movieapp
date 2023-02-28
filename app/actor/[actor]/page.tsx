@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Cast from "../../components/cast";
 import Movie from "../../components/movie";
 import Back from "../../components/back";
 
@@ -26,7 +24,7 @@ export default async function Actor({ params }: Props) {
         {actorRes?.results[0].name}
       </h1>
       <Back />
-      <div className="grid gap-16 grid-cols-fluid mt-6">
+      <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6">
         {filmRes.cast.map((movie: any) => {
           if (movie.poster_path !== null) {
             return (

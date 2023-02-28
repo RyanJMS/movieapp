@@ -17,14 +17,21 @@ export default function Movie({ id, title, poster_path, release_date }: Movie) {
       <h1 className="truncate mb-3">{title}</h1>
       <h2 className="mb-5">{release_date}</h2>
       <Link href={`/${id}`}>
-        <Image
-          priority={true}
-          src={imagePath + poster_path}
-          alt={title}
-          width={350}
-          height={450}
-          style={{ width: 400, height: 450 }}
-        />
+        <div
+          style={{
+            borderRadius: "10%",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            priority={true}
+            src={imagePath + poster_path}
+            alt={title}
+            width={350}
+            height={450}
+            style={{ width: 400, height: 450 }}
+          />
+        </div>
       </Link>
     </div>
   );

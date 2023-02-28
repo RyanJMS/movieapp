@@ -15,14 +15,21 @@ export default function Cast({ id, name, profile_path, character }: Cast) {
   return (
     <div className="text-center mx-4 container" key={id}>
       <Link href={`/actor/${name}`}>
-        <Image
-          priority={true}
-          src={imagePath + profile_path}
-          alt={name}
-          width={350}
-          height={450}
-          style={{ width: 400, height: 450 }}
-        />
+        <div
+          style={{
+            borderRadius: "10%",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            priority={true}
+            src={imagePath + profile_path}
+            alt={name}
+            width={350}
+            height={450}
+            style={{ width: 400, height: 450 }}
+          />
+        </div>
       </Link>
       <h1 className="truncate mb-3">{name}</h1>
       <h2 className="mb-5">{character}</h2>

@@ -56,7 +56,7 @@ export function Search({ results }: any) {
         }}
       />
       {searchResults ? (
-        <div className="grid gap-16 grid-cols-fluid mt-6">
+        <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6">
           {searchResults.results.map((movie: any) => {
             if (movie.poster_path !== null) {
               return (
@@ -72,7 +72,7 @@ export function Search({ results }: any) {
           })}
         </div>
       ) : (
-        <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
+        <div className="grid gap-16 container mx-auto grid-cols-fluid mt-6 mb-6">
           {popular?.results.map((movie: any) => {
             if (movie.poster_path !== null) {
               return (
