@@ -32,12 +32,12 @@ export default function Movie({
           <Image
             src={imagePath + poster_path}
             alt={title}
-            width={350}
+            width={400}
             height={450}
             priority={true}
             style={{
               width: 400,
-              height: 450,
+              height: 400,
               borderRadius: "10%",
               overflow: "hidden",
             }}

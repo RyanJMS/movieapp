@@ -21,10 +21,10 @@ export default function Cast({ id, name, profile_path, character }: Cast) {
         <Image
           src={imagePath + profile_path}
           alt={name}
-          width={350}
+          width={400}
           height={450}
           style={{
-            width: 400,
+            width: 350,
             height: 450,
             borderRadius: "10%",
             overflow: "hidden",

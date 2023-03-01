@@ -18,48 +18,56 @@ export default async function SearchResults({ params }: Props) {
     <div>
       <Navbar />
       <Back />
-      <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6">
-        {res.results.map((data: any) => {
-          {
-            if (data.media_type === "movie") {
-              return (
-                <Movie
-                  media_type={data.media_type}
-                  key={data.id}
-                  id={data.id}
-                  title={data.title}
-                  poster_path={data.poster_path}
-                  release_date={data.release_date}
-                />
-              );
-            }
-          }
-          {
-            if (data.media_type === "tv") {
-              return (
-                <Show
-                  media_type={data.media_type}
-                  key={data.id}
-                  id={data.id}
-                  name={data.name}
-                  poster_path={data.poster_path}
-                  first_air_date={data.first_air_date}
-                />
-              );
-            }
-          }
-          {
-            data.media_type === "person" && (
-              <Actor
-                media_type={data.media_type}
-                key={data.id}
-                id={data.id}
-                name={data.name}
-                profile_path={data.profile_path}
-              />
+      <div
+        className={"grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6"}
+      >
+        {res.results
+          .filter((data: any) => data.poster_path !== null)
+          .map((data: any) => {
+            return (
+              <>
+                <div
+                  className={
+                    res.total_results === 1
+                      ? "flex flex-center justify-center"
+                      : ""
+                  }
+                >
+                  <div>
+                    {data.media_type === "movie" && (
+                      <Movie
+                        media_type={data.media_type}
+                        key={data.id}
+                        id={data.id}
+                        title={data.title}
+                        poster_path={data.poster_path}
+                        release_date={data.release_date}
+                      />
+                    )}
+                    {data.media_type === "tv" && (
+                      <Show
+                        media_type={data.media_type}
+                        key={data.id}
+                        id={data.id}
+                        name={data.name}
+                        poster_path={data.poster_path}
+                        first_air_date={data.first_air_date}
+                      />
+                    )}
+                    {data.media_type === "person" && (
+                      <Actor
+                        media_type={data.media_type}
+                        key={data.id}
+                        id={data.id}
+                        name={data.name}
+                        profile_path={data.profile_path}
+                      />
+                    )}
+                  </div>{" "}
+                </div>
+              </>
             );
-          }
-        })}
+          })}{" "}
       </div>
       <Footer />
     </div>

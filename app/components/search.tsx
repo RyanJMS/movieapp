@@ -23,12 +23,12 @@ export function Search() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Search for a movies, shows, or actors"
-          aria-label="Search for movies"
+          placeholder="Search for a movies, shows, or actors..."
+          aria-label="Search for a movies, shows, or actors..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="text-black text-center mx-auto flex flex-center"
+          className="text-black text-center mx-auto w-80 p-2 rounded-md flex flex-center"
         />
       </form>
     </>
