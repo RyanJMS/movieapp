@@ -1,5 +1,5 @@
 import Movie from "../../components/movie";
-import Back from "../../components/back";
+import Back from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";

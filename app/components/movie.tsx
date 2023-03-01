@@ -22,7 +22,7 @@ export default function Movie({
     <div className="text-center mx-4" key={id}>
       <h1 className="truncate mb-3">{title}</h1>
       <h2 className="mb-5">{release_date}</h2>
-      <Link href={`/${id}`}>
+      <Link href={`/movie/${id}`}>
         <div
           style={{
             borderRadius: "10%",

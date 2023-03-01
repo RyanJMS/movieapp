@@ -15,7 +15,23 @@ export default async function Home() {
   return (
     <main className="main">
       <Navbar />
-      <Search results={res} />
+      <Search />
+      <div className="grid gap-16 container mx-auto grid-cols-fluid mt-6 mb-6">
+        {res.results.map((movie: any) => {
+          if (movie.poster_path !== null) {
+            return (
+              <Movie
+                media_type={movie.media_type}
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                poster_path={movie.poster_path}
+                release_date={movie.release_date}
+              />
+            );
+          }
+        })}
+      </div>
       <Footer />
     </main>
   );

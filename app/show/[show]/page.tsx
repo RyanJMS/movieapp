@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Cast from "../../components/cast";
-import Back from "../../components/back";
+import Cast from "../../components/actor";
+import Back from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 interface Props {
