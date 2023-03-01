@@ -1,4 +1,4 @@
-import LoadingSkeleton from "./components/loadingSkeleton";
+import LoadingSkeleton from "./components/loadingskeleton";
 
 export default function Loading() {
   return (
