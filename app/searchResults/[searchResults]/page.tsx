@@ -44,7 +44,7 @@ export default async function SearchResults({ params }: Props) {
                         title={data.title}
                         poster_path={data.poster_path}
                         release_date={data.release_date}
-                        loadingType={loadingType}
+                        // loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "tv" && (
@@ -55,7 +55,7 @@ export default async function SearchResults({ params }: Props) {
                         name={data.name}
                         poster_path={data.poster_path}
                         first_air_date={data.first_air_date}
-                        loadingType={loadingType}
+                        // loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "person" && (
@@ -65,7 +65,7 @@ export default async function SearchResults({ params }: Props) {
                         id={data.id}
                         name={data.name}
                         profile_path={data.profile_path}
-                        loadingType={loadingType}
+                        // loadingType={loadingType}
                       />
                     )}
                   </div>{" "}

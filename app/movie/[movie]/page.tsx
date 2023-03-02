@@ -114,7 +114,7 @@ export default async function MovieDetail({ params }: Props) {
           <div className="grid gap-16 mx-auto w-full grid-cols-fluid mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: any, index: number) => {
-                const loadingType = index < 2 ? "eager" : "lazy";
+                // const loadingType = index < 2 ? "eager" : "lazy";
 
                 {
                   if (actor.profile_path !== null) {
@@ -126,7 +126,7 @@ export default async function MovieDetail({ params }: Props) {
                         profile_path={actor.profile_path}
                         character={actor.character}
                         media_type={actor.media_type}
-                        loadingType={loadingType}
+                        // loadingType={loadingType}
                       />
                     );
                   }

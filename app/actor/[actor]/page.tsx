@@ -28,7 +28,7 @@ export default async function Actor({ params }: Props) {
       <BackLink />
       <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6">
         {filmRes.cast.map((data: any, index: number) => {
-          const loadingType = index < 6 ? "eager" : "lazy";
+          // const loadingType = index < 6 ? "eager" : "lazy";
           {
             if (data.poster_path && data.name !== null) {
               {
@@ -41,7 +41,7 @@ export default async function Actor({ params }: Props) {
                       title={data.title}
                       poster_path={data.poster_path}
                       release_date={data.release_date}
-                      loadingType={loadingType}
+                      // loadingType={loadingType}
                     />
                   );
                 }
@@ -56,7 +56,7 @@ export default async function Actor({ params }: Props) {
                       name={data.name}
                       poster_path={data.poster_path}
                       first_air_date={data.first_air_date}
-                      loadingType={loadingType}
+                      // loadingType={loadingType}
                     />
                   );
                 }

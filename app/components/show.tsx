@@ -8,7 +8,7 @@ interface ShowProps {
   poster_path: string;
   media_type: string;
   first_air_date: string;
-  loadingType: "eager" | "lazy";
+  // loadingType: "eager" | "lazy";
 }
 
 const imagePath = "https://image.tmdb.org/t/p/original";
@@ -19,8 +19,8 @@ export default function Show({
   poster_path,
   media_type,
   first_air_date,
-  loadingType,
-}: ShowProps) {
+}: // loadingType,
+ShowProps) {
   return (
     <div
       className="text-center mx-4 sm:text-2xl xs:text-2xl container"

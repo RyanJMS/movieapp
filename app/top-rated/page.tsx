@@ -13,7 +13,7 @@ export default async function TopRated() {
       <BackLink />
       <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
         {res.results.map((movie: any, index: number) => {
-          const loadingType = index < 5 ? "eager" : "lazy";
+          // const loadingType = index < 5 ? "eager" : "lazy";
 
           if (res.poster_path !== null) {
             return (
@@ -24,7 +24,7 @@ export default async function TopRated() {
                 title={movie.title}
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
-                loadingType={loadingType}
+                // loadingType={loadingType}
               />
             );
           }
