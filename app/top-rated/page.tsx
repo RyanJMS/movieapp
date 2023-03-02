@@ -12,16 +12,19 @@ export default async function TopRated() {
       <Navbar />
       <BackLink />
       <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
-        {res.results.map((movie: any) => {
+        {res.results.map((movie: any, index: number) => {
+          const loadingType = index < 6 ? "eager" : "lazy";
+
           if (res.poster_path !== null) {
             return (
               <Movie
                 media_type={movie.media_type}
-                key={movie.id}
+                key={index}
                 id={movie.id}
                 title={movie.title}
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
+                loadingType={loadingType}
               />
             );
           }

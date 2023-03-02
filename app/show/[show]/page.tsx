@@ -107,16 +107,19 @@ export default async function ShowDetail({ params }: Props) {
           </div>
           <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
             {castRes?.cast
-              ?.map((actor: any) => {
+              ?.map((actor: any, index: number) => {
+                const loadingType = index < 6 ? "eager" : "lazy";
+
                 if (actor.profile_path !== null) {
                   return (
                     <Cast
                       media_type={actor.media_type}
-                      key={actor.id}
+                      key={index}
                       id={actor.id}
                       name={actor.name}
                       profile_path={actor.profile_path}
                       character={actor.character}
+                      loadingType={loadingType}
                     />
                   );
                 }

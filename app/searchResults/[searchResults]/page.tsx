@@ -23,7 +23,9 @@ export default async function SearchResults({ params }: Props) {
       >
         {res.results
           .filter((data: any) => data.poster_path !== null)
-          .map((data: any) => {
+          .map((data: any, index: number) => {
+            const loadingType = index < 6 ? "eager" : "lazy";
+
             return (
               <>
                 <div
@@ -37,30 +39,33 @@ export default async function SearchResults({ params }: Props) {
                     {data.media_type === "movie" && (
                       <Movie
                         media_type={data.media_type}
-                        key={data.id}
+                        key={index}
                         id={data.id}
                         title={data.title}
                         poster_path={data.poster_path}
                         release_date={data.release_date}
+                        loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "tv" && (
                       <Show
                         media_type={data.media_type}
-                        key={data.id}
+                        key={index}
                         id={data.id}
                         name={data.name}
                         poster_path={data.poster_path}
                         first_air_date={data.first_air_date}
+                        loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "person" && (
                       <Actor
                         media_type={data.media_type}
-                        key={data.id}
+                        key={index}
                         id={data.id}
                         name={data.name}
                         profile_path={data.profile_path}
+                        loadingType={loadingType}
                       />
                     )}
                   </div>{" "}

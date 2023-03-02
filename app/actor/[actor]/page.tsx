@@ -27,34 +27,39 @@ export default async function Actor({ params }: Props) {
       </h1>
       <BackLink />
       <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6">
-        {filmRes.cast.map((data: any) => {
-          if (data.poster_path && data.name !== null) {
-            {
-              if (data.media_type === "movie") {
-                return (
-                  <Movie
-                    media_type={data.media_type}
-                    key={data.id}
-                    id={data.id}
-                    title={data.title}
-                    poster_path={data.poster_path}
-                    release_date={data.release_date}
-                  />
-                );
+        {filmRes.cast.map((data: any, index: number) => {
+          const loadingType = index < 6 ? "eager" : "lazy";
+          {
+            if (data.poster_path && data.name !== null) {
+              {
+                if (data.media_type === "movie") {
+                  return (
+                    <Movie
+                      media_type={data.media_type}
+                      key={index}
+                      id={data.id}
+                      title={data.title}
+                      poster_path={data.poster_path}
+                      release_date={data.release_date}
+                      loadingType={loadingType}
+                    />
+                  );
+                }
               }
-            }
-            {
-              if (data.media_type === "tv") {
-                return (
-                  <Show
-                    media_type={data.media_type}
-                    key={data.id}
-                    id={data.id}
-                    name={data.name}
-                    poster_path={data.poster_path}
-                    first_air_date={data.first_air_date}
-                  />
-                );
+              {
+                if (data.media_type === "tv") {
+                  return (
+                    <Show
+                      media_type={data.media_type}
+                      key={index}
+                      id={data.id}
+                      name={data.name}
+                      poster_path={data.poster_path}
+                      first_air_date={data.first_air_date}
+                      loadingType={loadingType}
+                    />
+                  );
+                }
               }
             }
           }
