@@ -1,7 +1,7 @@
 import Navbar from "../components/navbar";
 import Movie from "../components/movie";
 import Footer from "../components/footer";
-
+import BackLink from "../components/backButton";
 export default async function Upcoming() {
   const data = await fetch(
     ` https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US&page=1`
@@ -11,6 +11,7 @@ export default async function Upcoming() {
   return (
     <>
       <Navbar />
+      <BackLink />
       <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
         {res.results.map((movie: any) => {
           if (res.poster_path !== null) {

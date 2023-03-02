@@ -1,5 +1,5 @@
 import Movie from "../../components/movie";
-import Back from "../../components/backButton";
+import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
@@ -25,7 +25,7 @@ export default async function Actor({ params }: Props) {
       <h1 className="text-2xl sm:text-2xl xs:text-2xl mt-4 mb-4 text-center">
         {actorRes?.results[0].name}
       </h1>
-      <Back />
+      <BackLink />
       <div className="grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6">
         {filmRes.cast.map((data: any) => {
           if (data.poster_path && data.name !== null) {

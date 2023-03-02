@@ -1,5 +1,5 @@
 import Movie from "../../components/movie";
-import Back from "../../components/backButton";
+import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
@@ -17,7 +17,7 @@ export default async function SearchResults({ params }: Props) {
   return (
     <div>
       <Navbar />
-      <Back />
+      <BackLink />
       <div
         className={"grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6"}
       >

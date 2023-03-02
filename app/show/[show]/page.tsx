@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Cast from "../../components/actor";
-import Back from "../../components/backButton";
+import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 interface Props {
@@ -25,7 +25,7 @@ export default async function ShowDetail({ params }: Props) {
   return (
     <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
       <Navbar />
-      <Back />
+      <BackLink />
       <div className="text-center sm:text-2xl xs:text-2xl">
         <h2 className="text-2xl mb-4">{res.name}</h2>
         <h2>
