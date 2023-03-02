@@ -19,28 +19,24 @@ export default function Movie({
   media_type,
 }: Movie) {
   return (
-    <div className="text-center mx-4" key={id}>
-      <h1 className="truncate mb-3">{title}</h1>
+    <div className="text-center mx-4 text-xl sm:text-2xl xs:text-2xl" key={id}>
+      <h1 className="truncate mb-3 ">{title}</h1>
       <h2 className="mb-5">{release_date}</h2>
       <Link href={`/movie/${id}`}>
         <div
           style={{
             borderRadius: "10%",
             overflow: "hidden",
+            position: "relative",
           }}
         >
           <Image
             src={imagePath + poster_path}
             alt={title}
+            quality={100}
+            loading="lazy"
             width={400}
             height={450}
-            priority={true}
-            style={{
-              width: 400,
-              height: 400,
-              borderRadius: "10%",
-              overflow: "hidden",
-            }}
           />
         </div>
       </Link>

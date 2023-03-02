@@ -14,25 +14,25 @@ const imagePath = "https://image.tmdb.org/t/p/original";
 
 export default function Cast({ id, name, profile_path, character }: Cast) {
   return (
-    <div className="text-center container" key={id}>
+    <div className="text-center container sm:text-2xl xs:text-2xl" key={id}>
       <h1 className="truncate mb-3">{name}</h1>
       {character && <h2 className="mb-5">{character}</h2>}
       <Link href={`/actor/${name}`}>
-        <Image
-          src={imagePath + profile_path}
-          alt={name}
-          width={400}
-          height={450}
+        <div
           style={{
-            width: 350,
-            height: 450,
             borderRadius: "10%",
             overflow: "hidden",
+            position: "relative",
           }}
-          loading="eager"
-          placeholder="blur"
-          blurDataURL={`https://image.tmdb.org/t/p/w92/${profile_path}`}
-        />
+        >
+          <Image
+            src={imagePath + profile_path}
+            alt={name}
+            loading="lazy"
+            width={400}
+            height={450}
+          />
+        </div>
       </Link>
     </div>
   );

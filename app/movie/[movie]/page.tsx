@@ -22,7 +22,7 @@ export default async function MovieDetail({ params }: Props) {
   const castRes = await castData.json();
 
   return (
-    <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
+    <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
       <Navbar />
       <Back />
       <div className="text-center">

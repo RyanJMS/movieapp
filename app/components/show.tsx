@@ -20,7 +20,10 @@ export default function Show({
   first_air_date,
 }: ShowProps) {
   return (
-    <div className="text-center mx-4 container" key={id}>
+    <div
+      className="text-center mx-4 sm:text-2xl xs:text-2xl container"
+      key={id}
+    >
       <h1 className="truncate mb-3">{name}</h1>
       <h2 className="mb-5">{first_air_date}</h2>
       <Link href={`/show/${id}`}>
@@ -28,22 +31,15 @@ export default function Show({
           style={{
             borderRadius: "10%",
             overflow: "hidden",
+            position: "relative",
           }}
         >
           <Image
             src={imagePath + poster_path}
             alt={name}
-            width={350}
-            height={450}
-            style={{
-              width: 400,
-              height: 450,
-              borderRadius: "10%",
-              overflow: "hidden",
-            }}
             loading="lazy"
-            placeholder="blur"
-            blurDataURL={`https://image.tmdb.org/t/p/w92/${poster_path}`}
+            width={400}
+            height={450}
           />
         </div>
       </Link>
