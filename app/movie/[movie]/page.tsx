@@ -21,11 +21,11 @@ export default async function MovieDetail({ params }: Props) {
   );
   const castRes = await castData.json();
 
-  const videoData = await fetch(
-    `https://api.themoviedb.org/3/movie/${process.env.API_KEY}/videos?api_key=${process.env.API_KEY}&language=en-US`
-  );
+  // const videoData = await fetch(
+  //   `https://api.themoviedb.org/3/movie/${process.env.API_KEY}/videos?api_key=${process.env.API_KEY}&language=en-US`
+  // );
 
-  const videoRes = await videoData.json();
+  // const videoRes = await videoData.json();
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
@@ -114,7 +114,7 @@ export default async function MovieDetail({ params }: Props) {
           <div className="grid gap-16 mx-auto w-full grid-cols-fluid mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: any, index: number) => {
-                const loadingType = index < 6 ? "eager" : "lazy";
+                const loadingType = index < 2 ? "eager" : "lazy";
 
                 {
                   if (actor.profile_path !== null) {

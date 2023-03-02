@@ -20,8 +20,7 @@ export default async function ShowDetail({ params }: Props) {
     `https://api.themoviedb.org/3/tv/${params.show}/credits?api_key=${process.env.API_KEY}&language=en-US`
   );
   const castRes = await castData.json();
-  console.log(res);
-  console.log(params);
+
   return (
     <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
       <Navbar />

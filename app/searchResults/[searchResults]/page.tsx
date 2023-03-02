@@ -24,7 +24,7 @@ export default async function SearchResults({ params }: Props) {
         {res.results
           .filter((data: any) => data.poster_path !== null)
           .map((data: any, index: number) => {
-            const loadingType = index < 6 ? "eager" : "lazy";
+            const loadingType = index < 4 ? "eager" : "lazy";
 
             return (
               <>

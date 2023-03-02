@@ -14,7 +14,7 @@ export default async function Upcoming() {
       <BackLink />
       <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
         {res.results.map((movie: any, index: number) => {
-          const loadingType = index < 6 ? "eager" : "lazy";
+          const loadingType = index < 5 ? "eager" : "lazy";
 
           if (res.poster_path !== null) {
             return (
