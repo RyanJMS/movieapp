@@ -9,7 +9,9 @@ export function Search() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    router.push(`/searchResults/${query}`);
+    if (query.length > 3) {
+      router.push(`/searchResults/${query}`);
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
