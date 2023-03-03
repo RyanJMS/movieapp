@@ -18,7 +18,7 @@ export default async function Home() {
       <Search />
       <div className="grid gap-16 container mx-auto grid-cols-fluid mt-6 mb-6">
         {res.results.map((movie: any, index: number) => {
-          // const loadingType = index < 4 ? "eager" : "lazy";
+          // const loadingType = index === 0 ? "eager" : "lazy";
 
           if (movie.poster_path !== null) {
             return (

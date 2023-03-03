@@ -38,8 +38,8 @@ export default async function MovieDetail({ params }: Props) {
         <h2
           className={
             res?.status === "Released"
-              ? `text-sm bg-green-600 inline-block my-2 mx-2 px-2 rounded-md`
-              : `text-sm bg-red-600 inline-block my-2 mx-2 px-2 rounded-md`
+              ? `text-sm text-white bg-green-600 inline-block my-2 mx-2 px-2 rounded-md`
+              : `text-sm text-white bg-red-600 inline-block my-2 mx-2 px-2 rounded-md`
           }
         >
           {res.status}
