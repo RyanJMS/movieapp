@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
+import { Search } from "../../components/search";
 interface Props {
   params: any;
 }
@@ -18,6 +19,7 @@ export default async function SearchResults({ params }: Props) {
     <div>
       <Navbar />
       <BackLink />
+      <Search />
       <div
         className={"grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6"}
       >
@@ -44,7 +46,7 @@ export default async function SearchResults({ params }: Props) {
                         title={data.title}
                         poster_path={data.poster_path}
                         release_date={data.release_date}
-                        // loadingType={loadingType}
+                        loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "tv" && (

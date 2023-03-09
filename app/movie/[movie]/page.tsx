@@ -7,6 +7,16 @@ interface Props {
   params: any;
 }
 
+// export async function generateStaticParams() {
+//   const trendingData = await fetch(
+//     `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`
+//   );
+//   const res = await trendingData.json();
+//   return res.results.map((movie: any) => ({
+//     movie: toString(),
+//   }));
+// }
+
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
 

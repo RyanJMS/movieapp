@@ -40,8 +40,8 @@ ShowProps) {
             src={imagePath + poster_path}
             alt={name}
             loading="lazy"
-            width={400}
-            height={450}
+            width={500}
+            height={500}
           />
         </div>
       </Link>

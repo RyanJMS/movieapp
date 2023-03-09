@@ -35,10 +35,9 @@ export default function Movie({
           <Image
             src={imagePath + poster_path}
             alt={title}
-            quality={100}
             loading={loadingType}
-            width={400}
-            height={450}
+            width={500}
+            height={500}
           />
         </div>
       </Link>
