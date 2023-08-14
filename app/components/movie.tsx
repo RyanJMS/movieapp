@@ -21,23 +21,28 @@ export default function Movie({
   loadingType,
 }: Movie) {
   return (
-    <div className="text-center mx-4 text-xl sm:text-2xl xs:text-2xl" key={id}>
+    <div
+      className=" text-center mx-4 text-xl sm:text-2xl xs:text-2xl pb-12"
+      key={id}
+    >
       <h1 className="truncate mb-3 ">{title}</h1>
-      <h2 className="mb-5">{release_date}</h2>
+      <h2 className="mb-5">{release_date ? release_date : <br />}</h2>
       <Link href={`/movie/${id}`}>
         <div
+          className=""
           style={{
-            borderRadius: "10%",
+            borderRadius: "1%",
             overflow: "hidden",
             position: "relative",
+            width: "400px",
+            height: "600px",
           }}
         >
           <Image
             src={imagePath + poster_path}
             alt={title}
             loading={loadingType}
-            width={500}
-            height={500}
+            fill
           />
         </div>
       </Link>

@@ -66,7 +66,6 @@ export default async function MovieDetail({ params }: Props) {
         </div>
         <div
           style={{
-            borderRadius: "15%",
             overflow: "hidden",
           }}
         >

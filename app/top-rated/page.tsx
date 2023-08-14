@@ -11,8 +11,8 @@ export default async function TopRated() {
     <>
       <Navbar />
       <BackLink />
-      <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
-        {res.results.map((movie: any, index: number) => {
+      <div className="grid px-8 mx-auto gap-4 lg:grid-cols-4 md:grid-cols-2 mt-6 mb-6">
+        {res?.results?.map((movie: any, index: number) => {
           // const loadingType = index < 5 ? "eager" : "lazy";
 
           if (res.poster_path !== null) {

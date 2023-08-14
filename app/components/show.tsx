@@ -31,18 +31,14 @@ ShowProps) {
       <Link href={`/show/${id}`}>
         <div
           style={{
-            borderRadius: "10%",
+            borderRadius: "1%",
             overflow: "hidden",
             position: "relative",
+            width: "400px",
+            height: "600px",
           }}
         >
-          <Image
-            src={imagePath + poster_path}
-            alt={name}
-            loading="lazy"
-            width={500}
-            height={500}
-          />
+          <Image src={imagePath + poster_path} alt={name} loading="lazy" fill />
         </div>
       </Link>
     </div>

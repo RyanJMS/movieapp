@@ -16,8 +16,8 @@ export default async function Home() {
     <main className="main">
       <Navbar />
       <Search />
-      <div className="grid gap-16 container mx-auto grid-cols-fluid mt-6 mb-6">
-        {res.results.map((movie: any, index: number) => {
+      <div className="grid px-8 mx-auto gap-4 lg:grid-cols-4 md:grid-cols-2 mt-6 mb-6">
+        {res?.results?.map((movie: any, index: number) => {
           const loadingType = index < 4 ? "eager" : "lazy";
 
           if (movie.poster_path !== null) {

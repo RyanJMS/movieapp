@@ -14,17 +14,18 @@ export default async function SearchResults({ params }: Props) {
     `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${params.searchResults}&page=1&include_adult=false`
   );
   const res = await data.json();
-
+  console.log(res);
   return (
     <div>
       <Navbar />
       <BackLink />
       <Search />
-      <div
-        className={"grid container mx-auto gap-16 grid-cols-fluid mt-6 mb-6"}
-      >
-        {res.results
-          .filter((data: any) => data.poster_path !== null)
+      <div className="grid mx-auto gap-4 px-8 lg:grid-cols-4 md:grid-cols-2 mt-6 mb-6">
+        {res?.results
+          .filter(
+            (data: any) =>
+              data.poster_path !== null && data.profile_path !== null
+          )
           .map((data: any, index: number) => {
             const loadingType = index < 4 ? "eager" : "lazy";
 

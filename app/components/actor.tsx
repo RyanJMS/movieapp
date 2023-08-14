@@ -27,17 +27,18 @@ Cast) {
       <Link href={`/actor/${name}`}>
         <div
           style={{
-            borderRadius: "10%",
+            borderRadius: "1%",
             overflow: "hidden",
             position: "relative",
+            width: "400px",
+            height: "600px",
           }}
         >
           <Image
             src={imagePath + profile_path}
             alt={name}
             loading={"lazy"}
-            width={500}
-            height={500}
+            fill
           />
         </div>
       </Link>
