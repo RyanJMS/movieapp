@@ -18,9 +18,9 @@ export default async function SearchResults({ params }: Props) {
   return (
     <div>
       <Navbar />
-      <BackLink />
+
       <Search />
-      <div className="grid mx-auto gap-4 px-8 lg:grid-cols-4 md:grid-cols-2 mt-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results
           .filter(
             (data: any) =>
@@ -42,7 +42,7 @@ export default async function SearchResults({ params }: Props) {
                     {data.media_type === "movie" && (
                       <Movie
                         media_type={data.media_type}
-                        key={index}
+                        key={data.id}
                         id={data.id}
                         title={data.title}
                         poster_path={data.poster_path}
@@ -53,7 +53,7 @@ export default async function SearchResults({ params }: Props) {
                     {data.media_type === "tv" && (
                       <Show
                         media_type={data.media_type}
-                        key={index}
+                        key={data.id}
                         id={data.id}
                         name={data.name}
                         poster_path={data.poster_path}
@@ -64,7 +64,7 @@ export default async function SearchResults({ params }: Props) {
                     {data.media_type === "person" && (
                       <Actor
                         media_type={data.media_type}
-                        key={index}
+                        key={data.id}
                         id={data.id}
                         name={data.name}
                         profile_path={data.profile_path}

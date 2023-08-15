@@ -22,7 +22,7 @@ export function Search() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mb-20">
         <input
           type="text"
           placeholder="Search for a movies, shows, or actors..."
@@ -30,7 +30,7 @@ export function Search() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="text-black text-center mx-auto w-80 p-2 rounded-md flex flex-center"
+          className="text-black text-center mx-auto w-80 p-2  rounded-md flex flex-center"
         />
       </form>
     </>

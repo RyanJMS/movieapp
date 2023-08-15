@@ -40,7 +40,6 @@ export default async function MovieDetail({ params }: Props) {
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
       <Navbar />
-      <BackLink />
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
@@ -120,7 +119,7 @@ export default async function MovieDetail({ params }: Props) {
               <p className="text-lg text-left">{res?.overview}</p>
             </div>
           </div>
-          <div className="grid gap-16 mx-auto w-full grid-cols-fluid mt-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: any, index: number) => {
                 // const loadingType = index < 2 ? "eager" : "lazy";

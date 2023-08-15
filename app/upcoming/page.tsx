@@ -11,8 +11,7 @@ export default async function Upcoming() {
   return (
     <>
       <Navbar />
-      <BackLink />
-      <div className="grid px-8 mx-auto gap-4 lg:grid-cols-4 md:grid-cols-2 mt-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results?.map((movie: any, index: number) => {
           // const loadingType = index < 5 ? "eager" : "lazy";
 
@@ -20,7 +19,7 @@ export default async function Upcoming() {
             return (
               <Movie
                 media_type={movie.media_type}
-                key={index}
+                key={movie.id}
                 id={movie.id}
                 title={movie.title}
                 poster_path={movie.poster_path}

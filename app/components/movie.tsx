@@ -21,31 +21,26 @@ export default function Movie({
   loadingType,
 }: Movie) {
   return (
-    <div
-      className=" text-center mx-4 text-xl sm:text-2xl xs:text-2xl pb-12"
-      key={id}
-    >
-      <h1 className="truncate mb-3 ">{title}</h1>
-      <h2 className="mb-5">{release_date ? release_date : <br />}</h2>
-      <Link href={`/movie/${id}`}>
-        <div
-          className=""
-          style={{
-            borderRadius: "1%",
-            overflow: "hidden",
-            position: "relative",
-            width: "400px",
-            height: "600px",
-          }}
-        >
-          <Image
-            src={imagePath + poster_path}
-            alt={title}
-            loading={loadingType}
-            fill
-          />
+    <Link href={`/movie/${id}`}>
+      <div
+        className="group text-center mx-4 text-xl sm:text-2xl xs:text-2xl pb-12"
+        key={id}
+      >
+        <h1 className="h-20">{title}</h1>
+        <h2 className="mb-5">{release_date ? release_date : <br />}</h2>
+
+        <div className="relative w-full h-auto">
+          <div className="flex justify-center items-center h-full">
+            <Image
+              src={imagePath + poster_path}
+              alt={title}
+              loading={loadingType}
+              width={400}
+              height={600}
+            />
+          </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

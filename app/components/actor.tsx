@@ -21,25 +21,23 @@ export default function Cast({
 }: // loadingType,
 Cast) {
   return (
-    <div className="text-center container sm:text-2xl xs:text-2xl" key={id}>
-      <h1 className="truncate mb-3">{name}</h1>
-      {character && <h2 className="mb-5">{character}</h2>}
+    <div
+      className="group text-center mx-4 text-xl sm:text-2xl xs:text-2xl pb-12"
+      key={id}
+    >
+      <h1 className="h-12 mb-3">{name}</h1>
+      {character && <h2 className="h-20">{character}</h2>}
       <Link href={`/actor/${name}`}>
-        <div
-          style={{
-            borderRadius: "1%",
-            overflow: "hidden",
-            position: "relative",
-            width: "400px",
-            height: "600px",
-          }}
-        >
-          <Image
-            src={imagePath + profile_path}
-            alt={name}
-            loading={"lazy"}
-            fill
-          />
+        <div className="relative w-full h-auto">
+          <div className="flex justify-center items-center h-full">
+            <Image
+              src={imagePath + profile_path}
+              alt={name}
+              loading={"lazy"}
+              width={400}
+              height={600}
+            />
+          </div>
         </div>
       </Link>
     </div>
