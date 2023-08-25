@@ -19,6 +19,7 @@ export default async function Actor({ params }: Props) {
     `
   );
   const filmRes = await filmData.json();
+
   return (
     <div>
       <Navbar />

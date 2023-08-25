@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export function Search() {
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState("1");
   const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
