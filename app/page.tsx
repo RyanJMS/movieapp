@@ -4,6 +4,7 @@ import "./globals.css";
 import { Search } from "./components/search";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function Home() {
@@ -35,6 +36,7 @@ export default async function Home() {
           }
         })}
       </div>
+      <Script src="https://www.youtube.com/iframe_api" />
       <Footer />
     </main>
   );
