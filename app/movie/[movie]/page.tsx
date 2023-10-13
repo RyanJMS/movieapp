@@ -34,8 +34,6 @@ export default async function MovieDetail({ params }: Props) {
     (video: any) => video?.type === "Trailer" && video?.official === true
   );
 
-  console.log({ trailer });
-
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
       <Navbar />
