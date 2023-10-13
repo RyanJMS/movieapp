@@ -28,10 +28,10 @@ export default async function MovieDetail({ params }: Props) {
 
   const videoRes = await videoData.json();
 
-  const trailerList = videoRes.results;
+  const trailerList = videoRes?.results;
 
-  const trailer = trailerList.filter(
-    (video: any) => video.type === "Trailer" && video.official === true
+  const trailer = trailerList?.filter(
+    (video: any) => video?.type === "Trailer" && video?.official === true
   );
 
   console.log({ trailer });
@@ -67,7 +67,7 @@ export default async function MovieDetail({ params }: Props) {
             overflow: "hidden",
           }}
         >
-          {trailer.length > 0 ? (
+          {trailer?.length > 0 ? (
             <Video url={trailer[0]} />
           ) : (
             <Image
