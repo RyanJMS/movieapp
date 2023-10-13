@@ -1,12 +1,14 @@
 "use client";
 
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
+import Image from "next/dist/client/image";
 
-const VideoPlayer = ({ url }: any) => {
+const Video = ({ url, imagePath }: any) => {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVolume, setIsVolume] = useState(0);
+  const [videoUnavailable, setVideoUnavailable] = useState(false);
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
@@ -17,38 +19,41 @@ const VideoPlayer = ({ url }: any) => {
     setIsPlaying(true);
   };
 
+  const handleVideoError = () => {
+    setVideoUnavailable(true);
+  };
+
   return (
     <div className="youtube-container" onMouseEnter={togglePlay}>
       <button className="mute-button" onClick={toggleMute}>
         {isMuted ? "🔇" : "🔊"}
       </button>
-      {/* <iframe
-        height="600px"
-        width="100%"
-        referrerPolicy="no-referrer"
-        onMouseEnter={togglePlay}
-        id="trailer"
-        src={`https://www.youtube.com/embed/${url?.key}?autoplay=${
-          isPlaying ? 1 : 0
-        }&mute=${
-          isMuted ? 1 : 0
-        }&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media;"
-      >
-        {" "}
-      </iframe> */}
-      <ReactPlayer
-        height="600px"
-        width="100%"
-        muted={isMuted}
-        playing={isPlaying}
-        volume={isVolume}
-        url={`https://www.youtube.com/embed/${url?.key}`}
-        controls={false}
-      />
+
+      {videoUnavailable ? (
+        <Image
+          src={imagePath}
+          className="my-6 mx-auto p-2"
+          width={500}
+          height={500}
+          alt={"poster"}
+          loading="eager"
+          priority
+        />
+      ) : (
+        <ReactPlayer
+          className="video-player"
+          height="600px"
+          width="100%"
+          muted={isMuted}
+          playing={isPlaying}
+          volume={isVolume}
+          url={`https://www.youtube.com/embed/${url?.key}`}
+          controls={false}
+          onError={handleVideoError}
+        />
+      )}
     </div>
   );
 };
 
-export default VideoPlayer;
+export default Video;

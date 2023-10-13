@@ -66,7 +66,14 @@ export default async function MovieDetail({ params }: Props) {
           }}
         >
           {trailer?.length > 0 ? (
-            <Video url={trailer[0]} />
+            <Video
+              url={trailer[0]}
+              imagePath={`https://image.tmdb.org/t/p/w92${
+                res?.backdrop_path !== null
+                  ? imagePath + res?.backdrop_path
+                  : imagePath + res?.poster_path
+              }`}
+            />
           ) : (
             <Image
               src={
@@ -75,8 +82,8 @@ export default async function MovieDetail({ params }: Props) {
                   : imagePath + res?.poster_path
               }
               className="my-6 mx-auto p-2"
-              width={1000}
-              height={1000}
+              width={500}
+              height={500}
               alt={res?.title}
               loading="eager"
               placeholder="blur"

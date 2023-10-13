@@ -3,6 +3,7 @@ import Cast from "../../components/actor";
 import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import Video from "../../components/video";
 interface Props {
   params: any;
 }
@@ -20,6 +21,18 @@ export default async function ShowDetail({ params }: Props) {
     `https://api.themoviedb.org/3/tv/${params.show}/credits?api_key=${process.env.API_KEY}&language=en-US`
   );
   const castRes = await castData.json();
+
+  const videoData = await fetch(
+    `https://api.themoviedb.org/3/movie/${params.movie}/videos?api_key=${process.env.API_KEY}&language=en-US`
+  );
+
+  const videoRes = await videoData.json();
+
+  const trailerList = videoRes?.results;
+
+  const trailer = trailerList?.filter(
+    (video: any) => video?.type === "Trailer" && video?.official === true
+  );
 
   return (
     <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
@@ -55,20 +68,31 @@ export default async function ShowDetail({ params }: Props) {
             overflow: "hidden",
           }}
         >
-          <Image
-            src={
-              res?.backdrop_path !== null
-                ? imagePath + res?.backdrop_path
-                : imagePath + res?.poster_path
-            }
-            className="my-6 mx-auto p-2"
-            width={1000}
-            height={1000}
-            alt={res?.title}
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL={`https://image.tmdb.org/t/p/w92/${res?.backdrop_path}`}
-          />
+          {trailer?.length > 0 ? (
+            <Video
+              url={trailer[0]}
+              imagePath={`https://image.tmdb.org/t/p/w92${
+                res?.backdrop_path !== null
+                  ? imagePath + res?.backdrop_path
+                  : imagePath + res?.poster_path
+              }`}
+            />
+          ) : (
+            <Image
+              src={
+                res?.backdrop_path !== null
+                  ? imagePath + res?.backdrop_path
+                  : imagePath + res?.poster_path
+              }
+              className="my-6 mx-auto p-2"
+              width={500}
+              height={500}
+              alt={res?.title}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={`https://image.tmdb.org/t/p/w92/${res?.backdrop_path}`}
+            />
+          )}
         </div>
 
         <div className="container text-left mx-auto p-2">
