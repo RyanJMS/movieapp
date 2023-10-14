@@ -9,7 +9,6 @@ interface Movie {
   media_type: string;
   vote_average: number;
   index: number;
-  loadingType?: "eager" | "lazy";
 }
 
 const imagePath = "https://image.tmdb.org/t/p/original";
@@ -20,7 +19,6 @@ export default function Movie({
   poster_path,
   release_date,
   media_type,
-  loadingType,
   vote_average,
   index,
 }: Movie) {

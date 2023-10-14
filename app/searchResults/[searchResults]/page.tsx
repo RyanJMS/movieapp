@@ -50,7 +50,6 @@ export default async function SearchResults({ params }: Props) {
                         poster_path={data.poster_path}
                         release_date={data.release_date}
                         vote_average={data.vote_average}
-                        loadingType={loadingType}
                         index={index}
                       />
                     )}

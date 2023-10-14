@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState, SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 
 export function Search() {
@@ -15,22 +15,15 @@ export function Search() {
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleSubmit(event as any);
-    }
-  };
-
   return (
     <>
       <form onSubmit={handleSubmit} className="mb-20">
         <input
-          type="text"
+          type="text submit"
           placeholder="Search for a movies, shows, or actors..."
           aria-label="Search for a movies, shows, or actors..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
           className="text-black text-center mx-auto w-80 p-2  rounded-md flex flex-center"
         />
       </form>

@@ -144,7 +144,6 @@ export default async function MovieDetail({ params }: Props) {
                         character={actor.character}
                         media_type={actor.media_type}
                         index={index}
-                        // loadingType={loadingType}
                       />
                     );
                   }
