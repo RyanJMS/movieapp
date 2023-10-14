@@ -142,6 +142,7 @@ export default async function ShowDetail({ params }: Props) {
                       name={actor.name}
                       profile_path={actor.profile_path}
                       character={actor.character}
+                      index={index}
                       // loadingType={loadingType}
                     />
                   );

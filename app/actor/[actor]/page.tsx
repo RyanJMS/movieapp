@@ -3,8 +3,20 @@ import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
+
 interface Props {
   params: any;
+}
+
+interface MovieData {
+  id: number;
+  media_type: string;
+  title: string;
+  poster_path: string;
+  release_date?: string;
+  first_air_date?: string;
+  vote_average?: number;
+  index: number;
 }
 
 export default async function Actor({ params }: Props) {
@@ -19,6 +31,14 @@ export default async function Actor({ params }: Props) {
     `
   );
   const filmRes = await filmData.json();
+
+  const sortByDate = (a: MovieData, b: MovieData): number => {
+    const dateA = a.release_date || a.first_air_date || "";
+    const dateB = b.release_date || b.first_air_date || "";
+    return new Date(dateB).getTime() - new Date(dateA).getTime();
+  };
+
+  filmRes.cast.sort(sortByDate);
 
   return (
     <div>
@@ -41,6 +61,8 @@ export default async function Actor({ params }: Props) {
                       title={data.title}
                       poster_path={data.poster_path}
                       release_date={data.release_date}
+                      vote_average={data.vote_average}
+                      index={index}
                       // loadingType={loadingType}
                     />
                   );
@@ -56,6 +78,8 @@ export default async function Actor({ params }: Props) {
                       name={data.name}
                       poster_path={data.poster_path}
                       first_air_date={data.first_air_date}
+                      vote_average={data.vote_average}
+                      index={index}
                       // loadingType={loadingType}
                     />
                   );

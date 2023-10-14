@@ -8,6 +8,8 @@ interface Cast {
   profile_path: string;
   media_type: string;
   character?: string;
+  date_of_birth?: string;
+  index: number;
   // loadingType: "eager" | "lazy";
 }
 
@@ -18,28 +20,34 @@ export default function Cast({
   name,
   profile_path,
   character,
+  date_of_birth,
+  index,
 }: // loadingType,
 Cast) {
   return (
     <div
-      className="group text-center mx-4 text-xl sm:text-2xl xs:text-2xl pb-12"
-      key={id}
+      className="group text-center mx-4 mb-3  text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      key={index}
     >
-      <h1 className="h-12 mb-3">{name}</h1>
-      {character && <h2 className="h-20">{character}</h2>}
-      <Link href={`/actor/${name}`}>
-        <div className="relative w-full h-auto">
-          <div className="flex justify-center items-center h-full">
+      <div className="relative w-full h-auto">
+        <div className="flex justify-center items-center h-full">
+          <Link href={`/actor/${name}`}>
             <Image
               src={imagePath + profile_path}
               alt={name}
-              loading={"lazy"}
               width={400}
-              height={600}
+              height={500}
+              style={{ width: "350px", height: "550px" }}
+              priority
             />
-          </div>
+          </Link>
         </div>
+      </div>
+      <Link href={`/actor/${name}`}>
+        <h1 className="mt-3 text-xl sm:text-2xl xs:text-2xl">{name}</h1>
       </Link>
+
+      {character && <h2>{character}</h2>}
     </div>
   );
 }

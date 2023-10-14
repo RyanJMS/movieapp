@@ -7,6 +7,7 @@ export default async function TopRated() {
     ` https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`
   );
   const res = await data.json();
+
   return (
     <>
       <Navbar />
@@ -18,11 +19,13 @@ export default async function TopRated() {
             return (
               <Movie
                 media_type={movie.media_type}
-                key={movie.id}
+                key={index}
                 id={movie.id}
                 title={movie.title}
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
+                index={index}
+                vote_average={movie.vote_average}
                 // loadingType={loadingType}
               />
             );

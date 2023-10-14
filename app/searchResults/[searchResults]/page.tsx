@@ -17,7 +17,6 @@ export default async function SearchResults({ params }: Props) {
   );
   const res = await data.json();
 
-  console.log(res);
   return (
     <div>
       <Navbar />
@@ -34,6 +33,7 @@ export default async function SearchResults({ params }: Props) {
             return (
               <>
                 <div
+                  key={index}
                   className={
                     res.total_results === 1
                       ? "flex flex-center justify-center"
@@ -44,32 +44,38 @@ export default async function SearchResults({ params }: Props) {
                     {data.media_type === "movie" && (
                       <Movie
                         media_type={data.media_type}
-                        key={data.id}
+                        key={index}
                         id={data.id}
                         title={data.title}
                         poster_path={data.poster_path}
                         release_date={data.release_date}
+                        vote_average={data.vote_average}
                         loadingType={loadingType}
+                        index={index}
                       />
                     )}
                     {data.media_type === "tv" && (
                       <Show
                         media_type={data.media_type}
-                        key={data.id}
+                        key={index}
                         id={data.id}
                         name={data.name}
                         poster_path={data.poster_path}
                         first_air_date={data.first_air_date}
+                        vote_average={data.vote_average}
+                        index={index}
                         // loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "person" && (
                       <Actor
                         media_type={data.media_type}
-                        key={data.id}
+                        key={index}
                         id={data.id}
                         name={data.name}
                         profile_path={data.profile_path}
+                        date_of_birth={data.date_of_birth}
+                        index={index}
                         // loadingType={loadingType}
                       />
                     )}

@@ -19,11 +19,13 @@ export default async function Upcoming() {
             return (
               <Movie
                 media_type={movie.media_type}
-                key={movie.id}
+                key={index}
                 id={movie.id}
                 title={movie.title}
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
+                vote_average={movie.vote_average}
+                index={index}
                 // loadingType={loadingType}
               />
             );

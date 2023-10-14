@@ -17,7 +17,7 @@ export default async function Home() {
     <main className="main">
       <Navbar />
       <Search />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 mx-auto mt-6 mb-6">
         {res?.results?.map((movie: any, index: number) => {
           const loadingType = index < 4 ? "eager" : "lazy";
 
@@ -31,6 +31,8 @@ export default async function Home() {
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
                 loadingType={loadingType}
+                vote_average={movie.vote_average}
+                index={index}
               />
             );
           }
