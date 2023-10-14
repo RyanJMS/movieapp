@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import Image from "next/dist/client/image";
+import { VideoProps } from "../interface/interface";
 
-const Video = ({ url, imagePath }: any) => {
+const Video = ({ url, imagePath }: VideoProps) => {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVolume, setIsVolume] = useState(0);

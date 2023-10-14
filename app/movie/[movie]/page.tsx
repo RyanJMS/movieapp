@@ -4,9 +4,12 @@ import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Video from "../../components/video";
-interface Props {
-  params: any;
-}
+import {
+  VideoDetails,
+  Props,
+  MovieDetails,
+  ActorDetails,
+} from "@/app/interface/interface";
 
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -31,7 +34,8 @@ export default async function MovieDetail({ params }: Props) {
   const trailerList = videoRes?.results;
 
   const trailer = trailerList?.filter(
-    (video: any) => video?.type === "Trailer" && video?.official === true
+    (video: VideoDetails) =>
+      video?.type === "Trailer" && video?.official === true
   );
 
   return (
@@ -52,7 +56,7 @@ export default async function MovieDetail({ params }: Props) {
         </h2>
         <div className="flex justify-center max-w-500 mx-auto">
           {res?.genres !== undefined &&
-            res?.genres.map((genre: any) => {
+            res?.genres.map((genre: MovieDetails) => {
               return (
                 <h2 className=" p-2" key={genre?.id}>
                   {genre?.name}
@@ -130,7 +134,7 @@ export default async function MovieDetail({ params }: Props) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
             {castRes?.cast
-              ?.map((actor: any, index: number) => {
+              ?.map((actor: ActorDetails, index: number) => {
                 // const loadingType = index < 2 ? "eager" : "lazy";
 
                 {

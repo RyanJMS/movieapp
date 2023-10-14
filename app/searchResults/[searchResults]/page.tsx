@@ -4,6 +4,7 @@ import Footer from "../../components/footer";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
 import { Search } from "../../components/search";
+import { Data } from "@/app/interface/interface";
 interface Props {
   params: {
     searchResults: string;
@@ -24,10 +25,10 @@ export default async function SearchResults({ params }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results
           .filter(
-            (data: any) =>
+            (data: Data) =>
               data.poster_path !== null && data.profile_path !== null
           )
-          .map((data: any, index: number) => {
+          .map((data: Data, index: number) => {
             const loadingType = index < 4 ? "eager" : "lazy";
 
             return (
@@ -63,7 +64,6 @@ export default async function SearchResults({ params }: Props) {
                         first_air_date={data.first_air_date}
                         vote_average={data.vote_average}
                         index={index}
-                        // loadingType={loadingType}
                       />
                     )}
                     {data.media_type === "person" && (
@@ -75,7 +75,6 @@ export default async function SearchResults({ params }: Props) {
                         profile_path={data.profile_path}
                         date_of_birth={data.date_of_birth}
                         index={index}
-                        // loadingType={loadingType}
                       />
                     )}
                   </div>{" "}
