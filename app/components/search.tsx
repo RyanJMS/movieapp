@@ -17,14 +17,14 @@ export function Search() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="mb-20">
+      <form onSubmit={handleSubmit}>
         <input
-          type="text submit"
-          placeholder="Search for a movies, shows, or actors..."
-          aria-label="Search for a movies, shows, or actors..."
+          type="text"
+          placeholder="Search for movies, shows, or actors..."
+          aria-label="Search for movies, shows, or actors..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="text-black text-center mx-auto w-80 p-2  rounded-md flex flex-center"
+          className="text-black text-center w-80 p-2 rounded-md"
         />
       </form>
     </>

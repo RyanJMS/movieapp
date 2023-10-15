@@ -27,7 +27,6 @@ export default async function Home() {
   return (
     <main className="main">
       <Navbar />
-      <Search />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 mx-auto mt-6 mb-6">
         {res?.results?.map((movie: Movie, index: number) => {
           const loadingType = index < 4 ? "eager" : "lazy";

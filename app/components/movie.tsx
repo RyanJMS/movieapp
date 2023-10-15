@@ -24,7 +24,7 @@ export default function Movie({
 }: Movie) {
   return (
     <div
-      className="group text-center mx-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      className="group text-center mx-4 my-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
       key={index}
     >
       <div className="relative ">
