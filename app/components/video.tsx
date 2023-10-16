@@ -26,10 +26,6 @@ const Video = ({ url, imagePath }: VideoProps) => {
 
   return (
     <div className="youtube-container" onMouseEnter={togglePlay}>
-      <button className="mute-button" onClick={toggleMute}>
-        {isMuted ? "🔇" : "🔊"}
-      </button>
-
       {videoUnavailable ? (
         <Image
           src={imagePath}
@@ -41,17 +37,24 @@ const Video = ({ url, imagePath }: VideoProps) => {
           priority
         />
       ) : (
-        <ReactPlayer
-          className="video-player"
-          height="600px"
-          width="100%"
-          muted={isMuted}
-          playing={isPlaying}
-          volume={isVolume}
-          url={`https://www.youtube.com/embed/${url?.key}`}
-          controls={false}
-          onError={handleVideoError}
-        />
+        <div className="relative video-player">
+          <ReactPlayer
+            height="600px"
+            width="100%"
+            muted={isMuted}
+            playing={isPlaying}
+            volume={isVolume}
+            url={`https://www.youtube.com/embed/${url?.key}`}
+            controls={false}
+            onError={handleVideoError}
+          />
+          <button
+            className="mute-button absolute bottom-0 left-0 p-2"
+            onClick={toggleMute}
+          >
+            {isMuted ? "🔇" : "🔊"}
+          </button>
+        </div>
       )}
     </div>
   );
