@@ -1,32 +1,3 @@
-// import Link from "next/link";
-// import Image from "next/image";
-
-// export default function Navbar() {
-//   return (
-//     <header>
-//       <nav className="mt-4 mb-6 text-xl sm:text-2xl xs:text-2xl container flex flex-wrap items-center justify-between mx-auto">
-//         <Link
-//           className="item-center hover:bg-slate-500 rounded-md px-2"
-//           href={"/"}
-//         >
-//           Home
-//         </Link>
-//         <Link
-//           className="item-center  hover:bg-slate-500 rounded-md px-2"
-//           href={"/top-rated"}
-//         >
-//           Top Rated
-//         </Link>
-//         <Link
-//           className="item-center  hover:bg-slate-500 rounded-md px-2"
-//           href={"/upcoming"}
-//         >
-//           Upcoming
-//         </Link>
-//       </nav>
-//     </header>
-//   );
-// }
 "use client";
 
 import { useState } from "react";
@@ -57,7 +28,7 @@ export default function Navbar() {
         <div className="relative group inline-block">
           {isDropdownOpen && (
             <div className="absolute z-10 mt-8 transform -translate-x-1/2 left-1/2 w-48 p-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-lg">
-              <Link className="block p-2 hover:bg-blue-100" href="/top_rated">
+              <Link className="block p-2 hover:bg-blue-100" href="/top-rated">
                 Top Rated
               </Link>
               <Link className="block p-2 hover:bg-blue-100" href="/upcoming">
