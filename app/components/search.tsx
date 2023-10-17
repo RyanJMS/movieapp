@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 
 export function Search() {
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
   const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (query.length > 2) {
-      router.push(`/searchResults/${query}`);
+      router.push(`/searchResults/${query}/page/${page ?? 1}`);
     }
   };
 

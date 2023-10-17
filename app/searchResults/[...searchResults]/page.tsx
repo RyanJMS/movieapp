@@ -3,14 +3,28 @@ import Footer from "../../components/footer";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
 import { Data, Props } from "@/app/interface/interface";
+import Paginate from "@/app/components/paginate";
 
 export default async function SearchResults({ params }: Props) {
   const data = await fetch(
     `https://api.themoviedb.org/3/search/multi?api_key=${
       process.env.API_KEY
-    }&language=en-US&query=${params.searchResults}&page=${params.page ?? 1}`
+    }&language=en-US&query=${
+      params.searchResults[0] ?? params.searchResults
+    }&page=${params.searchResults[2] ?? 1}`
+  );
+  console.log(
+    `https://api.themoviedb.org/3/search/multi?api_key=${
+      process.env.API_KEY
+    }&language=en-US&query=${
+      params.searchResults[0] ?? params.searchResults
+    }&page=${params.searchResults[2] ?? 1}`
   );
   const res = await data.json();
+
+  console.log({ params });
+
+  console.log({ res });
 
   return (
     <div>
@@ -75,6 +89,7 @@ export default async function SearchResults({ params }: Props) {
             );
           })}{" "}
       </div>
+      <Paginate params={params} />
       <Footer />
     </div>
   );
