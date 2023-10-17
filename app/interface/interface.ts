@@ -55,5 +55,8 @@ export interface Props {
   params: {
     searchResults: string;
     page: number;
+    movie: string;
+    show: string;
+    actor: string;
   };
 }

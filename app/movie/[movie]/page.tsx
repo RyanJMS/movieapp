@@ -1,8 +1,5 @@
 import Image from "next/image";
 import Cast from "../../components/actor";
-import BackLink from "../../components/backButton";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/footer";
 import Video from "../../components/video";
 import {
   VideoDetails,
@@ -15,18 +12,18 @@ export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.searchResults}?api_key=${process.env.API_KEY}`,
+    `https://api.themoviedb.org/3/movie/${params.movie}?api_key=${process.env.API_KEY}`,
     { next: { revalidate: 0 } }
   );
   const res = await data.json();
 
   const castData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.searchResults}/credits?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${params.movie}/credits?api_key=${process.env.API_KEY}&language=en-US`
   );
   const castRes = await castData.json();
 
   const videoData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.searchResults}/videos?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${params.movie}/videos?api_key=${process.env.API_KEY}&language=en-US`
   );
 
   const videoRes = await videoData.json();

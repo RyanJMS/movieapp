@@ -16,18 +16,18 @@ export default async function ShowDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   const data = await fetch(
-    `https://api.themoviedb.org/3/tv/${params.searchResults}?api_key=${process.env.API_KEY}`,
+    `https://api.themoviedb.org/3/tv/${params.show}?api_key=${process.env.API_KEY}`,
     { next: { revalidate: 0 } }
   );
   const res = await data.json();
 
   const castData = await fetch(
-    `https://api.themoviedb.org/3/tv/${params.searchResults}/credits?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/tv/${params.show}/credits?api_key=${process.env.API_KEY}&language=en-US`
   );
   const castRes = await castData.json();
 
   const videoData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.searchResults}/videos?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${params.show}/videos?api_key=${process.env.API_KEY}&language=en-US`
   );
 
   const videoRes = await videoData.json();
