@@ -1,26 +1,19 @@
 import Movie from "../../components/movie";
-import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
-import { Search } from "../../components/search";
-import { Data } from "@/app/interface/interface";
-interface Props {
-  params: {
-    searchResults: string;
-    page: string;
-  };
-}
+import { Data, Props } from "@/app/interface/interface";
 
 export default async function SearchResults({ params }: Props) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${params.searchResults}&page=1`
+    `https://api.themoviedb.org/3/search/multi?api_key=${
+      process.env.API_KEY
+    }&language=en-US&query=${params.searchResults}&page=${params.page ?? 1}`
   );
   const res = await data.json();
 
   return (
     <div>
-      <Navbar />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results
           .filter(

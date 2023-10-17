@@ -15,18 +15,18 @@ export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}?api_key=${process.env.API_KEY}`,
+    `https://api.themoviedb.org/3/movie/${params.searchResults}?api_key=${process.env.API_KEY}`,
     { next: { revalidate: 0 } }
   );
   const res = await data.json();
 
   const castData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}/credits?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${params.searchResults}/credits?api_key=${process.env.API_KEY}&language=en-US`
   );
   const castRes = await castData.json();
 
   const videoData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}/videos?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${params.searchResults}/videos?api_key=${process.env.API_KEY}&language=en-US`
   );
 
   const videoRes = await videoData.json();
@@ -40,7 +40,6 @@ export default async function MovieDetail({ params }: Props) {
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
-      <Navbar />
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
@@ -157,7 +156,6 @@ export default async function MovieDetail({ params }: Props) {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

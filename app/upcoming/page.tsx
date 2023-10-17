@@ -11,7 +11,6 @@ export default async function Upcoming() {
 
   return (
     <>
-      <Navbar />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results?.map((movie: MovieDetails, index: number) => {
           // const loadingType = index < 5 ? "eager" : "lazy";
@@ -33,7 +32,6 @@ export default async function Upcoming() {
           }
         })}
       </div>
-      <Footer />
     </>
   );
 }

@@ -35,6 +35,7 @@ export interface Data {
   profile_path: string;
   character: string;
   date_of_birth: string;
+  results: [];
 }
 
 export interface VideoDetails {
@@ -52,7 +53,7 @@ export interface VideoProps {
 
 export interface Props {
   params: {
-    movie: string;
-    show: string;
+    searchResults: string;
+    page: number;
   };
 }
