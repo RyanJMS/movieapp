@@ -26,6 +26,8 @@ export default async function TopRated() {
                 release_date={movie.release_date}
                 index={index}
                 vote_average={movie.vote_average}
+                status={movie.status}
+                name={movie.name}
                 // loadingType={loadingType}
               />
             );

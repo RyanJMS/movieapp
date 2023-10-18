@@ -74,6 +74,8 @@ export default async function SearchResults({ params }: Props) {
                         release_date={data.release_date}
                         vote_average={data.vote_average}
                         index={index}
+                        status={data.status}
+                        name={data.name}
                       />
                     )}
                     {data.first_air_date && (
@@ -105,7 +107,7 @@ export default async function SearchResults({ params }: Props) {
             );
           })}{" "}
       </div>
-      <Paginate params={params} />
+      <Paginate params={params} total_pages={res.total_pages} />
     </div>
   );
 }

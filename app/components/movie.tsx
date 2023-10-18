@@ -1,15 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-interface Movie {
-  id: number;
-  title: string;
-  key: number;
-  poster_path: string;
-  release_date: string;
-  media_type: string;
-  vote_average: number;
-  index: number;
-}
+import { MovieDetails } from "../interface/interface";
 
 const imagePath = "https://image.tmdb.org/t/p/original";
 
@@ -21,7 +12,7 @@ export default function Movie({
   media_type,
   vote_average,
   index,
-}: Movie) {
+}: MovieDetails) {
   return (
     <div
       className="group text-center mx-4 my-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"

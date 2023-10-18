@@ -7,6 +7,7 @@ export interface MovieDetails {
   media_type: string;
   title: string;
   vote_average: number;
+  index: number;
 }
 
 export interface ShowDetails extends MovieDetails {
@@ -61,3 +62,9 @@ export interface Props {
     actor: string;
   };
 }
+
+export interface TotalPages {
+  total_pages: number;
+}
+
+export type PaginateProps = Props & TotalPages;

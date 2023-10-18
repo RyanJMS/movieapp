@@ -6,17 +6,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
-
-interface Movie {
-  media_type: string;
-  key: number;
-  id: number;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  loadingType: string;
-  vote_average: number;
-}
+import { MovieDetails } from "./interface/interface";
 
 export default async function Home() {
   const data = await fetch(
@@ -27,7 +17,7 @@ export default async function Home() {
   return (
     <main className="main">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 mx-auto mt-6 mb-6">
-        {res?.results?.map((movie: Movie, index: number) => {
+        {res?.results?.map((movie: MovieDetails, index: number) => {
           const loadingType = index < 4 ? "eager" : "lazy";
 
           if (movie.poster_path !== null) {
@@ -41,13 +31,14 @@ export default async function Home() {
                 release_date={movie.release_date}
                 vote_average={movie.vote_average}
                 index={index}
+                status={movie.status}
+                name={movie.name}
               />
             );
           }
         })}
       </div>
       <Script src="https://www.youtube.com/iframe_api" />
-      <Footer />
     </main>
   );
 }

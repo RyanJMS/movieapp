@@ -23,6 +23,8 @@ export default async function Upcoming() {
                 release_date={movie.release_date}
                 vote_average={movie.vote_average}
                 index={index}
+                status={movie.status}
+                name={movie.name}
                 // loadingType={loadingType}
               />
             );

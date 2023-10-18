@@ -3,6 +3,7 @@ import BackLink from "../../components/backButton";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
+import { MovieDetails, Data } from "@/app/interface/interface";
 
 interface Props {
   params: {
@@ -35,7 +36,7 @@ export default async function Actor({ params }: Props) {
   );
   const filmRes = await filmData.json();
 
-  const sortByDate = (a: MovieData, b: MovieData): number => {
+  const sortByDate = (a: Data, b: Data): number => {
     const dateA = a.release_date || a.first_air_date || "";
     const dateB = b.release_date || b.first_air_date || "";
     return new Date(dateB).getTime() - new Date(dateA).getTime();
@@ -49,7 +50,7 @@ export default async function Actor({ params }: Props) {
         {actorRes?.results[0].name}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
-        {filmRes.cast.map((data: MovieData, index: number) => {
+        {filmRes.cast.map((data: Data, index: number) => {
           // const loadingType = index < 6 ? "eager" : "lazy";
           {
             if (data.poster_path && data.name !== null) {
@@ -65,6 +66,8 @@ export default async function Actor({ params }: Props) {
                       release_date={data.release_date}
                       vote_average={data.vote_average}
                       index={index}
+                      status={data.status}
+                      name={data.name}
                       // loadingType={loadingType}
                     />
                   );

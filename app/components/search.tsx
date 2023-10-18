@@ -24,11 +24,11 @@ export function Search() {
           aria-label="Search for movies, shows, or actors..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="text-black text-center w-80 p-2 rounded-md"
+          className="text-black text-center w-80 h-10 p-2 rounded-md"
         />
         <select
           id="type"
-          className="text-black relative inline-block"
+          className="text-black text-left w-30 h-10 p-2 ml-2 rounded-md"
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
