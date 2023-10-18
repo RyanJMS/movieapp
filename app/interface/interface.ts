@@ -35,6 +35,7 @@ export interface Data {
   profile_path: string;
   character: string;
   date_of_birth: string;
+  popularity: number;
   results: [];
 }
 

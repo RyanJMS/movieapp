@@ -46,7 +46,7 @@ export default function Movie({
           <h2 className="mr-5">
             {vote_average
               ? `⭐ ${Math.round(vote_average * 10) / 10}`
-              : `Rate this ${media_type}`}
+              : `Rate ${title}`}
           </h2>
           <h2>{release_date ? `(${release_date.split("-")[0]})` : <br />}</h2>
         </div>

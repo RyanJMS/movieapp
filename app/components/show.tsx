@@ -46,7 +46,7 @@ ShowProps) {
           <h2 className="mr-5">
             {vote_average
               ? `⭐ ${Math.round(vote_average * 10) / 10}`
-              : `Rate this ${media_type}`}
+              : `Rate this ${name}`}
           </h2>
           <h2>{first_air_date ? first_air_date : <br />}</h2>
         </div>
