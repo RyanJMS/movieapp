@@ -2,23 +2,23 @@ import Movie from "../../components/movie";
 import Footer from "../../components/footer";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
-import { Data, Props } from "@/app/interface/interface";
-import Paginate from "@/app/components/paginate";
+import { Data, Props } from "../../interface/interface";
+import Paginate from "../../components/paginate";
 
-export default async function SearchResults({ params }: Props) {
+export default async function Search({ params }: Props) {
   const data = await fetch(
     `https://api.themoviedb.org/3/search/${
-      params.searchResults[0] ?? params.searchResults
+      params.search[0] ?? params.search
     }?api_key=${process.env.API_KEY}&language=en-US&query=${
-      params.searchResults[1] ?? params.searchResults
-    }&page=${params.searchResults[2] ?? 1}`
+      params.search[1] ?? params.search
+    }&page=${params.search[2] ?? 1}`
   );
   console.log(
     `https://api.themoviedb.org/3/search/${
-      params.searchResults[0] ?? params.searchResults
+      params.search[0] ?? params.search
     }?api_key=${process.env.API_KEY}&language=en-US&query=${
-      params.searchResults[1] ?? params.searchResults
-    }&page=${params.searchResults[2] ?? 1}`
+      params.search[1] ?? params.search
+    }&page=${params.search[2] ?? 1}`
   );
   const res = await data.json();
 
@@ -30,14 +30,14 @@ export default async function SearchResults({ params }: Props) {
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
-              params.searchResults[0] === "movie"
+              params.search[0] === "movie"
             ) {
               return true;
             }
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
-              params.searchResults[0] === "tv"
+              params.search[0] === "tv"
             ) {
               return true;
             }
@@ -45,7 +45,7 @@ export default async function SearchResults({ params }: Props) {
             if (
               data.profile_path !== null &&
               data.profile_path !== "" &&
-              params.searchResults[0] === "person"
+              params.search[0] === "person"
             ) {
               return true;
             }

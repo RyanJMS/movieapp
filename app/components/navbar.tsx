@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search } from "./search";
+import { SearchBar } from "./search-bar";
 
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -38,7 +38,7 @@ export default function Navbar() {
           )}
         </div>
         <div className="flex justify-center ml-8">
-          <Search />
+          <SearchBar />
         </div>
       </div>
     </nav>

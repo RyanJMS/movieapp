@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Cast from "../../components/actor";
-import BackLink from "../../components/backButton";
+import BackLink from "../../components/back-button";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Video from "../../components/video";

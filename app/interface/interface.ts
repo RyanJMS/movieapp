@@ -55,7 +55,7 @@ export interface VideoProps {
 
 export interface Props {
   params: {
-    searchResults: string;
+    search: string;
     page: number;
     movie: string;
     show: string;

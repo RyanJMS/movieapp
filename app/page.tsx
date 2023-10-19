@@ -1,9 +1,6 @@
 import { Inter } from "@next/font/google";
 import Movie from "./components/movie";
 import "./globals.css";
-import { Search } from "./components/search";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
 import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 import { MovieDetails } from "./interface/interface";

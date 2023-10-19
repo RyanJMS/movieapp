@@ -3,7 +3,7 @@
 import { FormEvent, useState, SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 
-export function Search() {
+export function SearchBar() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [type, setType] = useState("movie");
@@ -12,13 +12,14 @@ export function Search() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (query.length > 2) {
-      router.push(`/searchResults/${type}/${query}/${page ?? 1}`);
+      router.push(`/search/${type}/${query}/${page ?? 1}`);
     }
   };
   return (
     <>
       <form className="relative inline-block" onSubmit={handleSubmit}>
         <input
+          id="search-bar"
           type="text"
           placeholder="Search for movies, shows, or actors..."
           aria-label="Search for movies, shows, or actors..."
