@@ -7,6 +7,7 @@ import {
   MovieDetails,
   ActorDetails,
 } from "@/app/interface/interface";
+import Carousel from "@/app/components/carousel";
 
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -32,8 +33,14 @@ export default async function MovieDetail({ params }: Props) {
 
   const trailer = trailerList?.filter(
     (video: VideoDetails) =>
-      video?.type === "Trailer" && video?.official === true
+      video.type === "Trailer" ||
+      (video.type === "Teaser" && video.official === true)
   );
+
+  // const similar = await fetch(
+  //   `https://api.themoviedb.org/3/movie/${params.movie}/similar?language=en-US&page=1`
+  // );
+  // const similarData = await similar.json();
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
@@ -131,8 +138,6 @@ export default async function MovieDetail({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: ActorDetails, index: number) => {
-                // const loadingType = index < 2 ? "eager" : "lazy";
-
                 {
                   if (actor.profile_path !== null) {
                     return (
@@ -149,7 +154,7 @@ export default async function MovieDetail({ params }: Props) {
                   }
                 }
               })
-              .slice(0, 8)}
+              .slice(0, 12)}
           </div>
         </div>
       </div>

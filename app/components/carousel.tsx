@@ -1,41 +1,38 @@
-import Movie from "../../components/movie";
-import Footer from "../../components/footer";
-import Show from "../../components/show";
-import Actor from "../../components/actor";
-import { Data, Props } from "../../interface/interface";
-import Paginate from "../../components/paginate";
+"use client";
 
-export default async function Search({ params }: Props) {
-  const data = await fetch(
-    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&language=en-US&query=${params.search[1]}&page=${params.search[2]}`
-  );
+import React, { useState } from "react";
+import Show from "./show";
+import Movie from "./movie";
+import Actor from "./actor";
+import { Data } from "../interface/interface";
 
-  console.log(
-    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&language=en-US&query=${params.search[1]}&page=${params.search[2]}`
-  );
-  const res = await data.json();
+const Carousel = ({ items }: any) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((currentIndex + 1) % items.length);
+  };
+
+  const previousSlide = () => {
+    setCurrentIndex((currentIndex - 1 + items.length) % items.length);
+  };
 
   return (
-    <div>
-      {res?.total_results === 0 && (
-        <p className="text-2xl flex justify-center mt-20  items-center text-white">
-          No Results Found...
-        </p>
-      )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
-        {res?.results
+    <div className="relative overflow-hidden">
+      <div className="flex">
+        {items?.results
           ?.filter((data: Data) => {
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
-              params.search[0] === "movie"
+              data.media_type === "movie"
             ) {
               return true;
             }
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
-              params.search[0] === "tv"
+              data.media_type === "tv"
             ) {
               return true;
             }
@@ -43,7 +40,7 @@ export default async function Search({ params }: Props) {
             if (
               data.profile_path !== null &&
               data.profile_path !== "" &&
-              params.search[0] === "person"
+              data.media_type === "person"
             ) {
               return true;
             }
@@ -53,15 +50,14 @@ export default async function Search({ params }: Props) {
           .map((data: Data, index: number) => {
             return (
               <>
-                <div
-                  key={index}
-                  className={
-                    res.total_results === 1
-                      ? "flex flex-center justify-center"
-                      : ""
-                  }
-                >
-                  <div>
+                <div className="flex">
+                  <div
+                    className={`transform transition-transform ${
+                      index === currentIndex
+                        ? "translate-x-0"
+                        : "translate-x-full"
+                    }`}
+                  >
                     {data.poster_path && (
                       <Movie
                         media_type={data.media_type}
@@ -105,8 +101,20 @@ export default async function Search({ params }: Props) {
             );
           })}{" "}
       </div>
-
-      <Paginate params={params} total_pages={res.total_pages} />
+      <button
+        onClick={previousSlide}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2"
+      >
+        Previous
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2"
+      >
+        Next
+      </button>
     </div>
   );
-}
+};
+
+export default Carousel;
