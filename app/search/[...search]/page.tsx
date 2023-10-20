@@ -7,7 +7,7 @@ import Paginate from "../../components/paginate";
 
 export default async function Search({ params }: Props) {
   const data = await fetch(
-    params.search[1] !== undefined
+    params.search[0] === "genre"
       ? `https://api.themoviedb.org/3/discover/movie/?api_key=${process.env.API_KEY}&with_genres=${params.search[1]}`
       : `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${
           process.env.API_KEY
@@ -15,6 +15,8 @@ export default async function Search({ params }: Props) {
           params.search[2] ?? 1
         }`
   );
+
+  console.log(params.search[0]);
 
   const res = await data.json();
 
