@@ -7,7 +7,8 @@ import {
   MovieDetails,
   ActorDetails,
 } from "@/app/interface/interface";
-import Carousel from "@/app/components/carousel";
+import GenreTags from "@/app/components/genre-tags";
+// import MoviePosterCarousel from "../../components/carousel";
 
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -38,12 +39,13 @@ export default async function MovieDetail({ params }: Props) {
   );
 
   // const similar = await fetch(
-  //   `https://api.themoviedb.org/3/movie/${params.movie}/similar?language=en-US&page=1`
+  //   `https://api.themoviedb.org/3/movie/${params.movie}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
   // );
   // const similarData = await similar.json();
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
+      {/* <MoviePosterCarousel movies={similarData?.results} /> */}
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
@@ -58,14 +60,7 @@ export default async function MovieDetail({ params }: Props) {
           {res.status}
         </h2>
         <div className="flex justify-center max-w-500 mx-auto">
-          {res?.genres !== undefined &&
-            res?.genres.map((genre: MovieDetails) => {
-              return (
-                <h2 className=" p-2" key={genre?.id}>
-                  {genre?.name}
-                </h2>
-              );
-            })}
+          <GenreTags genres={res?.genres} />
         </div>
         <div
           style={{

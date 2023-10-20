@@ -60,6 +60,7 @@ export interface Props {
     movie: string;
     show: string;
     actor: string;
+    genre: Genre;
   };
 }
 
@@ -68,3 +69,22 @@ export interface TotalPages {
 }
 
 export type PaginateProps = Props & TotalPages;
+
+export interface Movie {
+  id: number;
+  title: string;
+  image: string;
+}
+
+export interface MoviePosterCarouselProps {
+  movies: [];
+}
+
+export interface Genre {
+  id: number;
+  name: string;
+}
+
+export interface Genres {
+  genres: Genre[];
+}

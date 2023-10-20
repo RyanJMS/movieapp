@@ -7,12 +7,15 @@ import Paginate from "../../components/paginate";
 
 export default async function Search({ params }: Props) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&language=en-US&query=${params.search[1]}&page=${params.search[2]}`
+    params.search[1] !== undefined
+      ? `https://api.themoviedb.org/3/discover/movie/?api_key=${process.env.API_KEY}&with_genres=${params.search[1]}`
+      : `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${
+          process.env.API_KEY
+        }&language=en-US&query=${params.search[1]}&page=${
+          params.search[2] ?? 1
+        }`
   );
 
-  console.log(
-    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&language=en-US&query=${params.search[1]}&page=${params.search[2]}`
-  );
   const res = await data.json();
 
   return (
@@ -25,6 +28,9 @@ export default async function Search({ params }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results
           ?.filter((data: Data) => {
+            if (Number(params.search[1]) >= 0) {
+              return true;
+            }
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
