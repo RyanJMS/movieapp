@@ -18,15 +18,15 @@ const MoviePosterCarousel: React.FC<MoviePosterCarouselProps> = ({
         {movies
           ?.filter((data: Data) => {
             if (
-              data.poster_path !== null &&
-              data.poster_path !== "" &&
+              data.poster_path !== null ||
+              data.poster_path !== "" ||
               data.media_type === "movie"
             ) {
               return true;
             }
             return false;
           })
-          .sort((a: Data, b: Data) => b.vote_average - a.vote_average)
+          ?.sort((a: Data, b: Data) => b.vote_average - a.vote_average)
           ?.map((movie: Data, index: number) => (
             <Movie
               key={index}
