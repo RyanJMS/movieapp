@@ -1,17 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-interface ShowProps {
-  id: number;
-  name: string;
-  key: number;
-  poster_path: string;
-  media_type: string;
-  first_air_date: string;
-  vote_average: number;
-  index: number;
-  // loadingType: "eager" | "lazy";
-}
+import { ShowDetails } from "../interface/interface";
 
 const imagePath = "https://image.tmdb.org/t/p/original";
 
@@ -24,7 +13,7 @@ export default function Show({
   vote_average,
   index,
 }: // loadingType,
-ShowProps) {
+ShowDetails) {
   return (
     <div className="group text-center mx-4 mb-4 text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
       <div className="relative">

@@ -4,6 +4,8 @@ import BackLink from "../../components/back-button";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Video from "../../components/video";
+import MoviePosterCarousel from "@/app/components/carousel";
+import GenreTags from "@/app/components/genre-tags";
 import {
   ActorDetails,
   MovieDetails,
@@ -27,7 +29,7 @@ export default async function ShowDetail({ params }: Props) {
   const castRes = await castData.json();
 
   const videoData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.show}/videos?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/tv/${params.show}/videos?api_key=${process.env.API_KEY}&language=en-US`
   );
 
   const videoRes = await videoData.json();
@@ -36,11 +38,17 @@ export default async function ShowDetail({ params }: Props) {
 
   const trailer = trailerList?.filter(
     (video: VideoDetails) =>
-      video?.type === "Trailer" && video?.official === true
+      video?.type === "Trailer" ||
+      (video?.type === "Teaser" && video?.official === true)
   );
 
+  // const similar = await fetch(
+  //   `https://api.themoviedb.org/3/tv/${params.show}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
+  // );
+  // const similarData = await similar.json();
+
   return (
-    <div className=" container mx-auto leading-10 mt-10 mb-10 w-full">
+    <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
       <div className="text-center sm:text-2xl xs:text-2xl">
         <h2 className="text-2xl mb-4">{res.name}</h2>
         <h2>
@@ -56,18 +64,10 @@ export default async function ShowDetail({ params }: Props) {
           {res.status}
         </h2>
         <div className="flex justify-center max-w-500 mx-auto">
-          {res?.genres !== undefined &&
-            res?.genres.map((genre: MovieDetails) => {
-              return (
-                <h2 className=" p-2" key={genre?.id}>
-                  {genre?.name}
-                </h2>
-              );
-            })}
+          <GenreTags genres={res?.genres} />
         </div>
         <div
           style={{
-            borderRadius: "15%",
             overflow: "hidden",
           }}
         >
@@ -131,7 +131,7 @@ export default async function ShowDetail({ params }: Props) {
               <p className="text-lg text-left">{res?.overview}</p>
             </div>
           </div>
-          <div className="grid gap-16 grid-cols-fluid mt-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
             {castRes?.cast
               ?.map((actor: ActorDetails, index: number) => {
                 const loadingType = index < 6 ? "eager" : "lazy";
@@ -151,10 +151,14 @@ export default async function ShowDetail({ params }: Props) {
                   );
                 }
               })
-              .slice(0, 8)}
+              .slice(0, 12)}
           </div>
         </div>
       </div>
+      {/* <h2 className="text-3xl text-center mx-auto my-5 text-white"> */}
+      {/* Similar Shows
+      </h2>
+      <MoviePosterCarousel movies={similarData?.results} /> */}
     </div>
   );
 }

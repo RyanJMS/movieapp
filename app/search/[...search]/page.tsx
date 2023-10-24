@@ -7,7 +7,9 @@ import Paginate from "../../components/paginate";
 
 export default async function Search({ params }: Props) {
   const data = await fetch(
-    params.search[0] === "genre"
+    params.search[0] !== "movie" &&
+      params.search[0] !== "tv" &&
+      params.search[0] !== "person"
       ? `https://api.themoviedb.org/3/discover/movie/?api_key=${process.env.API_KEY}&with_genres=${params.search[1]}`
       : `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${
           process.env.API_KEY
@@ -16,7 +18,15 @@ export default async function Search({ params }: Props) {
         }`
   );
 
-  console.log(params.search[0]);
+  console.log(
+    params.search[0] === "genre"
+      ? `https://api.themoviedb.org/3/discover/movie/?api_key=${process.env.API_KEY}&with_genres=${params.search[1]}`
+      : `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${
+          process.env.API_KEY
+        }&language=en-US&query=${params.search[1]}&page=${
+          params.search[2] ?? 1
+        }`
+  );
 
   const res = await data.json();
 
@@ -70,7 +80,7 @@ export default async function Search({ params }: Props) {
                   }
                 >
                   <div>
-                    {data.poster_path && (
+                    {data.release_date && (
                       <Movie
                         media_type={data.media_type}
                         key={index}

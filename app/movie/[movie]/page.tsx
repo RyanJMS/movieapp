@@ -8,7 +8,7 @@ import {
   ActorDetails,
 } from "@/app/interface/interface";
 import GenreTags from "@/app/components/genre-tags";
-// import MoviePosterCarousel from "../../components/carousel";
+import MoviePosterCarousel from "../../components/carousel";
 
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -38,14 +38,13 @@ export default async function MovieDetail({ params }: Props) {
       (video.type === "Teaser" && video.official === true)
   );
 
-  // const similar = await fetch(
-  //   `https://api.themoviedb.org/3/movie/${params.movie}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
-  // );
-  // const similarData = await similar.json();
+  const similar = await fetch(
+    `https://api.themoviedb.org/3/movie/${params.movie}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
+  );
+  const similarData = await similar.json();
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
-      {/* <MoviePosterCarousel movies={similarData?.results} /> */}
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
@@ -153,6 +152,8 @@ export default async function MovieDetail({ params }: Props) {
           </div>
         </div>
       </div>
+
+      <MoviePosterCarousel movies={similarData?.results} />
     </div>
   );
 }

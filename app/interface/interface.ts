@@ -10,8 +10,14 @@ export interface MovieDetails {
   index: number;
 }
 
-export interface ShowDetails extends MovieDetails {
+export interface ShowDetails {
+  name: string;
+  id: number;
+  poster_path: string;
   first_air_date: string;
+  media_type: string;
+  vote_average: number;
+  index: number;
 }
 
 export interface ActorDetails {
