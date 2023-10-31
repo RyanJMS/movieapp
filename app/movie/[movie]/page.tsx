@@ -9,6 +9,7 @@ import {
 } from "@/app/interface/interface";
 import GenreTags from "@/app/components/genre-tags";
 import MoviePosterCarousel from "../../components/carousel";
+import Rating from "@/app/components/rating";
 
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -47,6 +48,7 @@ export default async function MovieDetail({ params }: Props) {
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
+        {/* <Rating /> */}
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
         <h2>Runtime: {res?.runtime} minutes</h2>
         <h2

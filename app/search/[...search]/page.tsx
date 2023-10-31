@@ -10,7 +10,9 @@ export default async function Search({ params }: Props) {
     params.search[0] !== "movie" &&
       params.search[0] !== "tv" &&
       params.search[0] !== "person"
-      ? `https://api.themoviedb.org/3/discover/movie/?api_key=${process.env.API_KEY}&with_genres=${params.search[1]}`
+      ? `https://api.themoviedb.org/3/discover/movie/?api_key=${
+          process.env.API_KEY
+        }&with_genres=${params.search[1]}&page=${params.search[2] ?? 1}`
       : `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${
           process.env.API_KEY
         }&language=en-US&query=${params.search[1]}&page=${
