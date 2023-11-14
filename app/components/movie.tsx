@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MovieDetails } from "../interface/interface";
 
 const imagePath = "https://image.tmdb.org/t/p/original";
+const base64 = "https://image.tmdb.org/t/p/w500";
 
 export default function Movie({
   id,
@@ -28,6 +29,8 @@ export default function Movie({
               height={500}
               style={{ width: "350px", height: "550px" }}
               priority
+              placeholder="blur"
+              blurDataURL={base64 + poster_path}
             />
           </Link>
         </div>
