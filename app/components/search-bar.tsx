@@ -6,13 +6,13 @@ import { useRouter } from "next/navigation";
 export function SearchBar() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("movie");
   const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (query.length > 2) {
-      router.push(`/search/${type}/${query}/${page ?? 1}`);
+    if (query !== "") {
+      router.push(`/search/${type}/${query.trim()}/${page ?? 1}`);
     }
   };
   return (
@@ -20,12 +20,14 @@ export function SearchBar() {
       <form className="relative inline-block" onSubmit={handleSubmit}>
         <input
           id="search-bar"
-          type="text"
+          type="search"
           placeholder="Search for movies, shows, or actors..."
           aria-label="Search for movies, shows, or actors..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="text-black text-center w-80 h-10 p-2 rounded-md"
+          // pattern="[^'\x22]+"
+          title="Invalid input"
         />
         <select
           id="type"

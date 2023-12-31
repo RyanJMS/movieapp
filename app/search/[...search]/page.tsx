@@ -1,5 +1,4 @@
 import Movie from "../../components/movie";
-import Footer from "../../components/footer";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
 import { Data, Props } from "../../interface/interface";
@@ -38,6 +37,7 @@ export default async function Search({ params }: Props) {
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
+              data.poster_path !== undefined &&
               params.search[0] === "movie"
             ) {
               return true;
@@ -45,6 +45,7 @@ export default async function Search({ params }: Props) {
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
+              data.poster_path !== undefined &&
               params.search[0] === "tv"
             ) {
               return true;

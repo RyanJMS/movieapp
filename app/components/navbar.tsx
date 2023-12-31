@@ -12,14 +12,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-900 py-3">
+    <nav
+      onMouseLeave={() => setIsDropdownOpen(false)}
+      className="bg-gray-900 py-3"
+    >
       <div className="justify-start  group ml-20 flex items-center">
         <Link
+          onMouseEnter={() => setIsDropdownOpen(false)}
           className="text-white hover:text-slate-300 text-2xl font-semibold"
           href="/"
         >
           Movie App
         </Link>
+
         <button
           onClick={toggleDropdown}
           className="text-white hover:text-slate-300 pl-6 text-2xl font-semibold"
@@ -29,6 +34,9 @@ export default function Navbar() {
         <div className="relative group inline-block">
           {isDropdownOpen && (
             <div className="absolute z-10 mt-8 transform -translate-x-1/2 left-1/2 w-48 p-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-lg">
+              <Link className="block p-2 hover:bg-blue-100" href="/">
+                Home
+              </Link>
               <Link className="block p-2 hover:bg-blue-100" href="/top-rated">
                 Top Rated
               </Link>
