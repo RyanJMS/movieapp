@@ -49,6 +49,7 @@ export default async function MovieDetail({ params }: Props) {
       <div className="text-center">
         <h2 className="text-2xl mb-4">{res?.title}</h2>
         {/* <Rating /> */}
+        <h2 className="text-lg">Original Language {res?.original_language}</h2>
         <h2 className="text-lg">Release Date: {res?.release_date}</h2>
         <h2>Runtime: {res?.runtime} minutes</h2>
         <h2
@@ -144,7 +145,6 @@ export default async function MovieDetail({ params }: Props) {
                         profile_path={actor.profile_path}
                         character={actor.character}
                         media_type={actor.media_type}
-                        index={index}
                       />
                     );
                   }

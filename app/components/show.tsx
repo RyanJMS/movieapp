@@ -11,7 +11,6 @@ export default function Show({
   media_type,
   first_air_date,
   vote_average,
-  index,
 }: // loadingType,
 ShowDetails) {
   return (

@@ -1,17 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-interface Cast {
-  id: number;
-  key: number;
-  name: string;
-  profile_path: string;
-  media_type: string;
-  character?: string;
-  date_of_birth?: string;
-  index: number;
-  // loadingType: "eager" | "lazy";
-}
+import { CastDetails } from "../interface/interface";
 
 const imagePath = "https://image.tmdb.org/t/p/original";
 
@@ -21,14 +10,10 @@ export default function Cast({
   profile_path,
   character,
   date_of_birth,
-  index,
 }: // loadingType,
-Cast) {
+CastDetails) {
   return (
-    <div
-      className="group text-center mx-4 mb-3  text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
-      key={index}
-    >
+    <div className="group text-center mx-4 mb-3  text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
       <div className="relative w-full h-auto">
         <div className="flex justify-center items-center h-full">
           <Link href={`/actor/${name}`}>

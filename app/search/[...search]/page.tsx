@@ -38,7 +38,9 @@ export default async function Search({ params }: Props) {
               data.poster_path !== null &&
               data.poster_path !== "" &&
               data.poster_path !== undefined &&
-              params.search[0] === "movie"
+              params.search[0] === "movie" &&
+              data.release_date !== "" &&
+              data.original_language === "en"
             ) {
               return true;
             }
@@ -60,7 +62,7 @@ export default async function Search({ params }: Props) {
             }
             return false;
           })
-          .sort((a: Data, b: Data) => b.vote_average - a.vote_average)
+          .sort((a: Data, b: Data) => b.popularity - a.popularity)
           .map((data: Data, index: number) => {
             return (
               <>
@@ -82,7 +84,8 @@ export default async function Search({ params }: Props) {
                         poster_path={data.poster_path}
                         release_date={data.release_date}
                         vote_average={data.vote_average}
-                        index={index}
+                        original_language={data.original_language}
+                        backdrop_path={data.backdrop_path}
                         status={data.status}
                         name={data.name}
                       />
@@ -96,7 +99,6 @@ export default async function Search({ params }: Props) {
                         poster_path={data.poster_path}
                         first_air_date={data.first_air_date}
                         vote_average={data.vote_average}
-                        index={index}
                       />
                     )}
                     {data.profile_path && (
@@ -107,7 +109,6 @@ export default async function Search({ params }: Props) {
                         name={data.name}
                         profile_path={data.profile_path}
                         date_of_birth={data.date_of_birth}
-                        index={index}
                       />
                     )}
                   </div>{" "}

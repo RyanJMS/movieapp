@@ -3,11 +3,12 @@ export interface MovieDetails {
   name: string;
   id: number;
   poster_path: string;
+  backdrop_path: string;
   release_date: string;
   media_type: string;
   title: string;
   vote_average: number;
-  index: number;
+  original_language: string;
 }
 
 export interface ShowDetails {
@@ -17,7 +18,6 @@ export interface ShowDetails {
   first_air_date: string;
   media_type: string;
   vote_average: number;
-  index: number;
 }
 
 export interface ActorDetails {
@@ -29,11 +29,23 @@ export interface ActorDetails {
   media_type: string;
 }
 
+export interface CastDetails {
+  id: number;
+  key: number;
+  name: string;
+  profile_path: string;
+  media_type: string;
+  character?: string;
+  date_of_birth?: string;
+  // loadingType: "eager" | "lazy";
+}
+
 export interface Data {
   status: string;
   name: string;
   id: number;
   poster_path: string;
+  backdrop_path: string;
   release_date: string;
   media_type: string;
   title: string;
@@ -43,6 +55,7 @@ export interface Data {
   character: string;
   date_of_birth: string;
   popularity: number;
+  original_language: string;
   results: [];
 }
 

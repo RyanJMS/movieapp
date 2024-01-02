@@ -10,27 +10,27 @@ export default function Movie({
   title,
   poster_path,
   release_date,
-  media_type,
   vote_average,
-  index,
+  backdrop_path,
 }: MovieDetails) {
   return (
-    <div
-      className="group text-center mx-4 my-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
-      key={index}
-    >
+    <div className="group text-center mx-4 my-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
       <div className="relative ">
         <div className="flex justify-center items-center ">
           <Link href={`/movie/${id}`}>
             <Image
-              src={imagePath + poster_path}
+              src={
+                poster_path !== null
+                  ? imagePath + poster_path
+                  : imagePath + backdrop_path
+              }
               alt={title}
               width={400}
               height={500}
               style={{ width: "350px", height: "550px" }}
               priority
-              placeholder="blur"
-              blurDataURL={base64 + poster_path}
+              // placeholder="blur"
+              // blurDataURL={base64 + poster_path}
             />
           </Link>
         </div>
