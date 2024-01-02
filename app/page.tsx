@@ -27,7 +27,8 @@ export default async function Home() {
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
                 vote_average={movie.vote_average}
-                index={index}
+                original_language={movie.original_language}
+                backdrop_path={movie.backdrop_path}
                 status={movie.status}
                 name={movie.name}
               />
