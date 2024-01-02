@@ -69,7 +69,7 @@ export default async function Search({ params }: Props) {
                 <div
                   key={index}
                   className={
-                    res.total_results === 1
+                    res.total_results <= 4
                       ? "flex flex-center justify-center"
                       : ""
                   }

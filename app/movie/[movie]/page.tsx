@@ -8,7 +8,7 @@ import {
   ActorDetails,
 } from "@/app/interface/interface";
 import GenreTags from "@/app/components/genre-tags";
-import MoviePosterCarousel from "../../components/carousel";
+import PosterCarousel from "../../components/carousel";
 import Rating from "@/app/components/rating";
 
 export default async function MovieDetail({ params }: Props) {
@@ -155,9 +155,7 @@ export default async function MovieDetail({ params }: Props) {
         </div>
       </div>
 
-      {similarData?.results && (
-        <MoviePosterCarousel movies={similarData.results} />
-      )}
+      {similarData?.results && <PosterCarousel data={similarData.results} />}
     </div>
   );
 }

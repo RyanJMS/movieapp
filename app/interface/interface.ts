@@ -40,6 +40,11 @@ export interface CastDetails {
   // loadingType: "eager" | "lazy";
 }
 
+export interface VideoDetails {
+  type: string;
+  official: boolean;
+}
+
 export interface Data {
   status: string;
   name: string;
@@ -57,11 +62,6 @@ export interface Data {
   popularity: number;
   original_language: string;
   results: [];
-}
-
-export interface VideoDetails {
-  type: string;
-  official: boolean;
 }
 
 export interface VideoProps {
@@ -95,8 +95,8 @@ export interface Movie {
   image: string;
 }
 
-export interface MoviePosterCarouselProps {
-  movies: [];
+export interface CarouselProps {
+  data: Data[];
 }
 
 export interface Genre {

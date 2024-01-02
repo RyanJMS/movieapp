@@ -24,10 +24,11 @@ export default async function TopRated() {
                 title={movie.title}
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
-                index={index}
                 vote_average={movie.vote_average}
                 status={movie.status}
                 name={movie.name}
+                original_language={movie.original_language}
+                backdrop_path={movie.backdrop_path}
                 // loadingType={loadingType}
               />
             );

@@ -13,6 +13,7 @@ import {
   VideoDetails,
 } from "@/app/interface/interface";
 import { type } from "os";
+import PosterCarousel from "@/app/components/carousel";
 
 export default async function ShowDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
@@ -31,6 +32,11 @@ export default async function ShowDetail({ params }: Props) {
   const videoData = await fetch(
     `https://api.themoviedb.org/3/tv/${params.show}/videos?api_key=${process.env.API_KEY}&language=en-US`
   );
+
+  const similar = await fetch(
+    `https://api.themoviedb.org/3/tv/${params.show}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
+  );
+  const similarData = await similar.json();
 
   const videoRes = await videoData.json();
 
@@ -145,7 +151,6 @@ export default async function ShowDetail({ params }: Props) {
                       name={actor.name}
                       profile_path={actor.profile_path}
                       character={actor.character}
-                      index={index}
                       // loadingType={loadingType}
                     />
                   );
@@ -155,10 +160,8 @@ export default async function ShowDetail({ params }: Props) {
           </div>
         </div>
       </div>
-      {/* <h2 className="text-3xl text-center mx-auto my-5 text-white"> */}
-      {/* Similar Shows
-      </h2>
-      <MoviePosterCarousel movies={similarData?.results} /> */}
+
+      {similarData?.results && <PosterCarousel data={similarData.results} />}
     </div>
   );
 }
