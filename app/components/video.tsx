@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
-import Image from "next/dist/client/image";
+import Image from "next/image";
 import { VideoProps } from "../interface/interface";
 
 const Video = ({ url, imagePath }: VideoProps) => {
