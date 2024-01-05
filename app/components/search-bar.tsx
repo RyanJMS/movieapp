@@ -40,7 +40,7 @@ export function SearchBar() {
         </label>
         <select
           id="media-type"
-          className="text-black text-left w-30 h-10 p-2 ml-2 rounded-md"
+          className="text-black text-left w-30 h-12 p-2 ml-2 rounded-md"
           value={type}
           onChange={(e) => setType(e.target.value)}
         >

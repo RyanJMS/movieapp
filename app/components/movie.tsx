@@ -21,7 +21,9 @@ export default function Movie({
             <div style={{ width: "350px", height: "500px" }}>
               <Image
                 src={
-                  poster_path !== null
+                  poster_path !== null &&
+                  poster_path !== undefined &&
+                  poster_path !== ""
                     ? imagePath + poster_path
                     : imagePath + backdrop_path
                 }
