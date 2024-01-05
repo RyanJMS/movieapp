@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.2.3",
-    "@next/font": "13.1.6",
     "@plaiceholder/next": "^2.5.0",
     "@trendyol-js/react-carousel": "^3.0.2",
     "@types/node": "18.14.0",

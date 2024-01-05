@@ -17,20 +17,29 @@ export function SearchBar() {
   };
   return (
     <>
-      <form className="relative inline-block" onSubmit={handleSubmit}>
+      <form
+        id="search-form"
+        name="search-form"
+        className="relative inline-block"
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="search-bar" className="sr-only">
+          Search for movies, shows, or actors
+        </label>
         <input
           id="search-bar"
           type="search"
           placeholder="Search for movies, shows, or actors..."
-          aria-label="Search for movies, shows, or actors..."
+          aria-label="Search for movies, shows, or actors"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="text-black text-center w-80 h-10 p-2 rounded-md"
-          // pattern="[^'\x22]+"
-          title="Invalid input"
         />
+        <label htmlFor="media-type" className="sr-only">
+          Select media type
+        </label>
         <select
-          id="type"
+          id="media-type"
           className="text-black text-left w-30 h-10 p-2 ml-2 rounded-md"
           value={type}
           onChange={(e) => setType(e.target.value)}

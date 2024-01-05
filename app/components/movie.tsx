@@ -18,20 +18,22 @@ export default function Movie({
       <div className="relative ">
         <div className="flex justify-center items-center ">
           <Link href={`/movie/${id}`}>
-            <Image
-              src={
-                poster_path !== null
-                  ? imagePath + poster_path
-                  : imagePath + backdrop_path
-              }
-              alt={title}
-              width={400}
-              height={500}
-              style={{ width: "350px", height: "550px" }}
-              priority
-              // placeholder="blur"
-              // blurDataURL={base64 + poster_path}
-            />
+            <div style={{ width: "350px", height: "500px" }}>
+              <Image
+                src={
+                  poster_path !== null
+                    ? imagePath + poster_path
+                    : imagePath + backdrop_path
+                }
+                alt={title}
+                width={300}
+                height={400}
+                // style={{ width: "350px", height: "550px" }}
+                priority
+                // placeholder="blur"
+                // blurDataURL={base64 + poster_path}
+              />
+            </div>
           </Link>
         </div>
       </div>

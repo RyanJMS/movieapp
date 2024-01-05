@@ -1,4 +1,4 @@
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import Movie from "./components/movie";
 import "./globals.css";
 import Script from "next/script";
@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <main className="main">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 mx-auto mt-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 mx-auto mt-6 mb-6">
         {res?.results?.map((movie: MovieDetails, index: number) => {
           const loadingType = index < 4 ? "eager" : "lazy";
 
