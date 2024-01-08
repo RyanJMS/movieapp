@@ -17,38 +17,42 @@ export function SearchBar() {
   };
   return (
     <>
-      <form
-        id="search-form"
-        name="search-form"
-        className="relative inline-block"
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="search-bar" className="sr-only">
-          Search for movies, shows, or actors
-        </label>
-        <input
-          id="search-bar"
-          type="search"
-          placeholder="Search for movies, shows, or actors..."
-          aria-label="Search for movies, shows, or actors"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="text-black text-center w-80 h-10 p-2 rounded-md"
-        />
-        <label htmlFor="media-type" className="sr-only">
-          Select media type
-        </label>
-        <select
-          id="media-type"
-          className="text-black text-left w-30 h-12 p-2 ml-2 rounded-md"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
+      <div className="">
+        <form
+          id="search-form"
+          name="search-form"
+          className="relative inline-block"
+          onSubmit={handleSubmit}
         >
-          <option value="movie">Movie</option>
-          <option value="tv">TV</option>
-          <option value="person">Person</option>
-        </select>
-      </form>
+          <label htmlFor="search-bar" className="sr-only">
+            Search for movies, shows, or actors
+          </label>
+          <input
+            id="search-bar"
+            type="search"
+            placeholder="Search for movies, shows, or actors..."
+            aria-label="Search for movies, shows, or actors"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="text-black text-center p-2 rounded-md"
+            style={{ width: "300px", height: "48px" }}
+          />
+          <label htmlFor="media-type" className="sr-only">
+            Select media type
+          </label>
+          <select
+            id="media-type"
+            className="text-black text-left  p-2 ml-2 rounded-md"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            style={{ width: "120px", height: "48px" }}
+          >
+            <option value="movie">Movie</option>
+            <option value="tv">Show</option>
+            <option value="person">Person</option>
+          </select>
+        </form>
+      </div>
     </>
   );
 }

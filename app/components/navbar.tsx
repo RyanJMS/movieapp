@@ -16,10 +16,10 @@ export default function Navbar() {
       onMouseLeave={() => setIsDropdownOpen(false)}
       className="bg-gray-900 py-3"
     >
-      <div className="justify-start  group ml-20 flex items-center">
+      <div className="justify-between container group  flex items-center">
         <Link
           onMouseEnter={() => setIsDropdownOpen(false)}
-          className="text-white hover:text-slate-300 text-2xl font-semibold"
+          className=" ml-10 text-white hover:text-slate-300 text-2xl font-semibold"
           href="/"
         >
           Movie App
@@ -46,7 +46,7 @@ export default function Navbar() {
             </div>
           )}
         </div>
-        <div className="flex justify-center flex-grow">
+        <div className="flex  justify-center flex-grow">
           <SearchBar />
         </div>
       </div>
