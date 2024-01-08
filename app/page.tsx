@@ -36,7 +36,7 @@ export default async function Home() {
           }
         })}
       </div>
-      <Script src="https://www.youtube.com/iframe_api" />
+      {/* <Script src="https://www.youtube.com/iframe_api" /> */}
     </main>
   );
 }
