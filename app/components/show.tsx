@@ -14,18 +14,30 @@ export default function Show({
 }: // loadingType,
 ShowDetails) {
   return (
-    <div className="group text-center mx-4 mb-4 text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
-      <div className="relative">
+    <div
+      className="group text-center mx-4 my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      style={{ width: "300px", height: "500px" }}
+    >
+      <div className="relative pb-12">
         <div className="relative flex justify-center items-center">
           <Link href={`/show/${id}`}>
-            <Image
-              src={imagePath + poster_path}
-              alt={name}
-              width={400}
-              height={500}
-              style={{ width: "350px", height: "550px" }}
-              priority
-            />
+            <div
+              style={{
+                width: "300px",
+                height: "400px",
+              }}
+            >
+              <Image
+                src={imagePath + poster_path}
+                alt={name}
+                width="0"
+                height="0"
+                sizes="100vw"
+                style={{ width: "100%", height: "auto" }}
+                // style={{ width: "350px", height: "550px" }}
+                priority
+              />
+            </div>
           </Link>
         </div>
       </div>
@@ -34,7 +46,7 @@ ShowDetails) {
           <h2 className="mr-5">
             {vote_average
               ? `⭐ ${Math.round(vote_average * 10) / 10}`
-              : `Rate this ${name}`}
+              : `0 Ratings Yet`}
           </h2>
           <h2>{first_air_date ? first_air_date : <br />}</h2>
         </div>

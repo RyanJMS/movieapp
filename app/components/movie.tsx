@@ -14,11 +14,19 @@ export default function Movie({
   backdrop_path,
 }: MovieDetails) {
   return (
-    <div className="group text-center mx-4 my-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
-      <div className="relative ">
+    <div
+      className="group text-center mx-4 my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      style={{ width: "300px", height: "500px" }}
+    >
+      <div className="relative pb-12">
         <div className="flex justify-center items-center ">
           <Link href={`/movie/${id}`}>
-            <div style={{ width: "350px", height: "500px" }}>
+            <div
+              style={{
+                width: "300px",
+                height: "400px",
+              }}
+            >
               <Image
                 src={
                   poster_path !== null &&
@@ -28,8 +36,10 @@ export default function Movie({
                     : imagePath + backdrop_path
                 }
                 alt={title}
-                width={300}
-                height={400}
+                width="0"
+                height="0"
+                sizes="100vw"
+                style={{ width: "100%", height: "auto" }}
                 // style={{ width: "350px", height: "550px" }}
                 priority
                 // placeholder="blur"
