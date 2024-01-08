@@ -1,8 +1,6 @@
-import { Inter } from "next/font/google";
 import Movie from "./components/movie";
 import "./globals.css";
 import Script from "next/script";
-const inter = Inter({ subsets: ["latin"] });
 import { MovieDetails } from "./interface/interface";
 
 export default async function Home() {
@@ -36,7 +34,7 @@ export default async function Home() {
           }
         })}
       </div>
-      {/* <Script src="https://www.youtube.com/iframe_api" /> */}
+      <Script src="https://www.youtube.com/iframe_api" />
     </main>
   );
 }
