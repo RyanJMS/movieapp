@@ -8,10 +8,18 @@ import Show from "./show";
 import { Carousel } from "@trendyol-js/react-carousel";
 
 const PosterCarousel: React.FC<CarouselProps> = ({ data }) => {
+  if (!data || data.length === 0) {
+    return (
+      <div className="text-center text-white">
+        No similar {data && data[0]?.release_date ? "Movies" : "Shows"}{" "}
+        available.
+      </div>
+    );
+  }
   return (
     <>
       <h2 className="text-3xl text-center mx-auto my-5 text-white">
-        Similar {data[0].release_date ? "Movies" : "Shows"}
+        Similar {data !== null && data[0].release_date ? "Movies" : "Shows"}
       </h2>
       {data[0].release_date ? (
         <Carousel show={3} swiping={true} slide={3}>

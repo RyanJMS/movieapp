@@ -34,8 +34,9 @@ export default async function ShowDetail({ params }: Props) {
   );
 
   const similar = await fetch(
-    `https://api.themoviedb.org/3/tv/${params.show}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/tv/${params.show}/similar?api_key=${process.env.API_KEY}&language=en-US`
   );
+
   const similarData = await similar.json();
 
   const videoRes = await videoData.json();
@@ -47,11 +48,6 @@ export default async function ShowDetail({ params }: Props) {
       video?.type === "Trailer" ||
       (video?.type === "Teaser" && video?.official === true)
   );
-
-  // const similar = await fetch(
-  //   `https://api.themoviedb.org/3/tv/${params.show}/similar?api_key=${process.env.API_KEY}&language=en-US&page=1`
-  // );
-  // const similarData = await similar.json();
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
