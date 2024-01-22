@@ -4,7 +4,6 @@ import BackLink from "../../components/back-button";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Video from "../../components/video";
-import MoviePosterCarousel from "@/app/components/carousel";
 import GenreTags from "@/app/components/genre-tags";
 import {
   ActorDetails,
@@ -13,7 +12,7 @@ import {
   VideoDetails,
 } from "@/app/interface/interface";
 import { type } from "os";
-import PosterCarousel from "@/app/components/carousel";
+import { PosterCarousel } from "@/app/components/carousel";
 
 export default async function ShowDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";

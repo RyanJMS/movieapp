@@ -8,7 +8,7 @@ import {
   ActorDetails,
 } from "@/app/interface/interface";
 import GenreTags from "@/app/components/genre-tags";
-import PosterCarousel from "../../components/carousel";
+import { PosterCarousel } from "../../components/carousel";
 import Rating from "@/app/components/rating";
 
 export default async function MovieDetail({ params }: Props) {

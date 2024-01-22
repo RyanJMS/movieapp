@@ -58,7 +58,7 @@ export default function Movie({
           </h2>
           <h2>{release_date ? `(${release_date.split("-")[0]})` : <br />}</h2>
         </div>
-        <h1 className=" text-xl sm:text-2xl xs:text-2xl">{title}</h1>
+        <h1 className=" text-xl sm:text-2xl xs:text-2xl truncate">{title}</h1>
       </Link>
     </div>
   );
