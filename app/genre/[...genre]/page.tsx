@@ -1,16 +1,13 @@
 import Movie from "../../components/movie";
-import Show from "../../components/show";
-import Actor from "../../components/actor";
+import Show from "@/app/components/show";
 import { Data, Props } from "../../interface/interface";
 import Paginate from "../../components/paginate";
 
-export default async function Search({ params }: Props) {
+export default async function Genre({ params }: Props) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/search/multi?api_key=${
+    `https://api.themoviedb.org/3/discover/movie/?api_key=${
       process.env.API_KEY
-    }&query=rambo&include_adult=false&language=en-US&page=${
-      params.search[2] ?? 1
-    }`
+    }&with_genres=${params.genre[1]}&page=${params.genre[2] ?? 1}`
   );
 
   const res = await data.json();
@@ -25,14 +22,13 @@ export default async function Search({ params }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 container  mx-auto mt-6 mb-6">
         {res?.results
           ?.filter((data: Data) => {
-            if (Number(params.search[1]) >= 0) {
+            if (Number(params.genre[1]) >= 0) {
               return true;
             }
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
               data.poster_path !== undefined &&
-              params.search[0] === "movie" &&
               data.release_date !== "" &&
               data.original_language === "en"
             ) {
@@ -41,16 +37,7 @@ export default async function Search({ params }: Props) {
             if (
               data.poster_path !== null &&
               data.poster_path !== "" &&
-              data.poster_path !== undefined &&
-              params.search[0] === "tv"
-            ) {
-              return true;
-            }
-
-            if (
-              data.profile_path !== null &&
-              data.profile_path !== "" &&
-              params.search[0] === "person"
+              data.poster_path !== undefined
             ) {
               return true;
             }
@@ -93,16 +80,6 @@ export default async function Search({ params }: Props) {
                         poster_path={data.poster_path}
                         first_air_date={data.first_air_date}
                         vote_average={data.vote_average}
-                      />
-                    )}
-                    {data.profile_path && (
-                      <Actor
-                        media_type={data.media_type}
-                        key={index}
-                        id={data.id}
-                        name={data.name}
-                        profile_path={data.profile_path}
-                        date_of_birth={data.date_of_birth}
                       />
                     )}
                   </div>{" "}

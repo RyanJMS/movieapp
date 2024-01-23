@@ -11,7 +11,7 @@ export default function GenreTags({ genres }: Genres) {
   const handleClick = (event: React.MouseEvent, genre: Genre) => {
     event.preventDefault();
 
-    router.push(`/search/${genre.name}/${genre.id}/${page}`);
+    router.push(`/genre/${genre.name.replace(" ", "-")}/${genre.id}/${page}`);
   };
 
   return (

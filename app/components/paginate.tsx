@@ -5,18 +5,21 @@ export default function Paginate({ params, total_pages }: PaginateProps) {
   let isNext = true;
   let isPrev = true;
 
-  if (Number(params.search[2]) - 1 === 0) {
+  if (Number(params.search ? params.search[2] : params.genre[2]) - 1 === 0) {
     isPrev = false;
   }
 
   if (
-    Number(params.search[2]) + 1 > total_pages ||
-    Number(params.search[2]) === total_pages
+    Number(params.search ? params.search[2] : params.genre[2]) + 1 >
+      total_pages ||
+    Number(params.search ? params.search[2] : params.genre[2]) === total_pages
   ) {
     isNext = false;
   }
 
-  const currentPage = Number(params.search[2]);
+  const currentPage = Number(
+    params.search ? params.search[2] : params.genre[2]
+  );
 
   const firstPage = Math.max(1, currentPage - 2);
   const lastPage = Math.min(total_pages, currentPage + 2);
@@ -25,9 +28,11 @@ export default function Paginate({ params, total_pages }: PaginateProps) {
     <>
       <div className="flex justify-center items-center">
         <Link
-          href={`/search/${params.search[0]}/${
-            params.search[1]
-          }/${Number(params.search[2]) - 1}`}
+          href={`/search/${
+            params.search ? params.search[0] : params.genre[0]
+          }/${params.search ? params.search[1] : params.genre[1]}/${
+            Number(params.search ? params.search[2] : params.genre[2]) - 1
+          }`}
           className={
             isPrev
               ? "text-white hover:text-slate-300 mr-5 text-2xl font-semibold"
@@ -41,7 +46,9 @@ export default function Paginate({ params, total_pages }: PaginateProps) {
           return (
             <Link
               key={page}
-              href={`/search/${params.search[0]}/${params.search[1]}/${page}`}
+              href={`/${params.search ? "search" : "genre"}/${
+                params.search ? params.search[0] : params.genre[0]
+              }/${params.search ? params.search[1] : params.genre[1]}/${page}`}
               className={
                 page === currentPage
                   ? "text-2xl mx-1 text-blue-500 font-bold"
@@ -53,9 +60,11 @@ export default function Paginate({ params, total_pages }: PaginateProps) {
           );
         })}
         <Link
-          href={`/search/${params.search[0]}/${
-            params.search[1]
-          }/${Number(params.search[2]) + 1}`}
+          href={`/${params.search ? "search" : "genre"}/${
+            params.search ? params.search[0] : params.genre[0]
+          }/${params.search ? params.search[1] : params.genre[1]}/${
+            Number(params.search ? params.search[2] : params.genre[2]) + 1
+          }`}
           className={
             isNext
               ? "text-white hover:text-slate-300 ml-5 text-2xl font-semibold"

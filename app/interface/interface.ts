@@ -79,7 +79,7 @@ export interface Props {
     movie: string;
     show: string;
     actor: string;
-    genre: Genre;
+    genre: string;
   };
 }
 
