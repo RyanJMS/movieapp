@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CastDetails } from "../interface/interface";
 
-const imagePath = "https://image.tmdb.org/t/p/original";
+const imagePath = "https://image.tmdb.org/t/p/w500";
 
 export default function Cast({
   id,
@@ -22,7 +22,7 @@ CastDetails) {
               alt={name}
               width={400}
               height={500}
-              style={{ width: "350px", height: "550px" }}
+              style={{ width: "350px", height: "500px" }}
               priority
             />
           </Link>

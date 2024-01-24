@@ -153,9 +153,8 @@ export default async function MovieDetail({ params }: Props) {
               .slice(0, 12)}
           </div>
         </div>
+        {similarData?.results && <PosterCarousel data={similarData.results} />}
       </div>
-
-      {similarData?.results && <PosterCarousel data={similarData.results} />}
     </div>
   );
 }

@@ -21,7 +21,7 @@ export const PosterCarousel: React.FC<CarouselProps> = ({ data }) => {
     );
   }
   return (
-    <Carousel>
+    <Carousel className="xl:w-3/4 lg:w-full mx-auto ">
       <CarouselContent>
         {data
           ?.filter((data: Data) => {

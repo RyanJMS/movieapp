@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MovieDetails } from "../interface/interface";
 
-const imagePath = "https://image.tmdb.org/t/p/original";
+const imagePath = "https://image.tmdb.org/t/p/w780";
 
 export default function Movie({
   id,
