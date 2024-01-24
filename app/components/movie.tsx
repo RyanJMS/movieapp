@@ -14,7 +14,7 @@ export default function Movie({
 }: MovieDetails) {
   return (
     <div
-      className="group text-center mx-2 my-6 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      className="group text-center mx-2 my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
       style={{ width: "300px", height: "450px" }}
     >
       <div className="relative pb-12">
@@ -22,8 +22,8 @@ export default function Movie({
           <Link href={`/movie/${id}`}>
             <div
               style={{
-                width: "200px",
-                height: "300px",
+                width: "250px",
+                height: "350px",
               }}
             >
               <Image
@@ -40,7 +40,6 @@ export default function Movie({
                 sizes="100vw"
                 priority
                 style={{ width: "100%", height: "auto" }}
-                quality={75}
               />
             </div>
           </Link>

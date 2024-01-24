@@ -15,7 +15,7 @@ export default function Show({
 ShowDetails) {
   return (
     <div
-      className="group text-center mx-2 my-4 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      className="group text-center mx-2 my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
       style={{ width: "300px", height: "500px" }}
     >
       <div className="relative pb-12">
@@ -23,8 +23,8 @@ ShowDetails) {
           <Link href={`/show/${id}`}>
             <div
               style={{
-                width: "200px",
-                height: "300px",
+                width: "250px",
+                height: "350px",
               }}
             >
               <Image

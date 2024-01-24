@@ -17,20 +17,27 @@ CastDetails) {
       <div className="relative w-full h-auto">
         <div className="flex justify-center items-center h-full">
           <Link href={`/actor/${name}`}>
-            <Image
-              src={imagePath + profile_path}
-              alt={name}
-              width="0"
-              height="0"
-              sizes="100vw"
-              style={{ width: "100%", height: "auto" }}
-              priority
-            />
+            <div
+              style={{
+                width: "250px",
+                height: "350px",
+              }}
+            >
+              <Image
+                src={imagePath + profile_path}
+                alt={name}
+                width="0"
+                height="0"
+                sizes="100vw"
+                style={{ width: "100%", height: "auto" }}
+                priority
+              />
+            </div>
           </Link>
         </div>
       </div>
       <Link href={`/actor/${name}`}>
-        <h1 className="mt-3 text-xl sm:text-2xl xs:text-2xl">{name}</h1>
+        <h1 className="mt-10 text-xl sm:text-2xl xs:text-2xl">{name}</h1>
       </Link>
 
       {character && <h2>{character}</h2>}
