@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <nav
       onMouseLeave={() => setIsDropdownOpen(false)}
-      className="bg-gray-900 pt-3 mb-20"
+      className="bg-gray-900 py-3"
     >
       <div className="justify-between container group  flex items-center">
         <Link
