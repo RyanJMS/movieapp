@@ -10,6 +10,11 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@next/bundle-analyzer": "^13.2.3",
     "@plaiceholder/next": "^2.5.0",
     "@radix-ui/react-slot": "^1.0.2",

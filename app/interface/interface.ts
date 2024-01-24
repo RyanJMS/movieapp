@@ -31,7 +31,6 @@ export interface ActorDetails {
 
 export interface CastDetails {
   id: number;
-  key: number;
   name: string;
   profile_path: string;
   media_type: string;

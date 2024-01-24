@@ -3,7 +3,6 @@ import Image from "next/image";
 import { MovieDetails } from "../interface/interface";
 
 const imagePath = "https://image.tmdb.org/t/p/original";
-const base64 = "https://image.tmdb.org/t/p/w500";
 
 export default function Movie({
   id,
@@ -39,11 +38,9 @@ export default function Movie({
                 width="0"
                 height="0"
                 sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                // style={{ width: "350px", height: "550px" }}
                 priority
-                // placeholder="blur"
-                // blurDataURL={base64 + poster_path}
+                style={{ width: "100%", height: "auto" }}
+                quality={75}
               />
             </div>
           </Link>

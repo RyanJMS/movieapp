@@ -42,11 +42,12 @@ export function SearchBar() {
           </label>
           <select
             id="media-type"
-            className="text-black text-left  p-2 ml-2 rounded-md"
+            className="text-black text-left p-2 ml-2 rounded-md"
             value={type}
             onChange={(e) => setType(e.target.value)}
             style={{ width: "120px", height: "48px" }}
           >
+            <option value="multi">All</option>
             <option value="movie">Movie</option>
             <option value="tv">Show</option>
             <option value="person">Person</option>
