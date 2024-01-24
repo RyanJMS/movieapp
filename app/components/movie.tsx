@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MovieDetails } from "../interface/interface";
 
-const imagePath = "https://image.tmdb.org/t/p/w780";
+const imagePath = "https://image.tmdb.org/t/p/w500";
 
 export default function Movie({
   id,
@@ -14,16 +14,16 @@ export default function Movie({
 }: MovieDetails) {
   return (
     <div
-      className="group text-center mx-4 my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
-      style={{ width: "300px", height: "500px" }}
+      className="group text-center mx-2 my-6 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      style={{ width: "300px", height: "450px" }}
     >
       <div className="relative pb-12">
         <div className="flex justify-center items-center ">
           <Link href={`/movie/${id}`}>
             <div
               style={{
-                width: "300px",
-                height: "400px",
+                width: "200px",
+                height: "300px",
               }}
             >
               <Image

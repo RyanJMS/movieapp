@@ -13,16 +13,17 @@ export default function Cast({
 }: // loadingType,
 CastDetails) {
   return (
-    <div className="group text-center mx-4 mb-3  text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
+    <div className="group text-center mx-2 my-4   text-xl sm:text-2xl xs:text-2xl hover:translate-y-[-15px] transition-transform duration-300 ease-in-out">
       <div className="relative w-full h-auto">
         <div className="flex justify-center items-center h-full">
           <Link href={`/actor/${name}`}>
             <Image
               src={imagePath + profile_path}
               alt={name}
-              width={400}
-              height={500}
-              style={{ width: "350px", height: "500px" }}
+              width="0"
+              height="0"
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }}
               priority
             />
           </Link>

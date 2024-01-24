@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <nav
       onMouseLeave={() => setIsDropdownOpen(false)}
-      className="bg-gray-900 py-3"
+      className="bg-gray-900 pt-3 mb-20"
     >
       <div className="justify-between container group  flex items-center">
         <Link
@@ -40,8 +40,8 @@ export default function Navbar() {
               <Link className="block p-2 hover:bg-blue-100" href="/top-rated">
                 Top Rated
               </Link>
-              <Link className="block p-2 hover:bg-blue-100" href="/upcoming">
-                Upcoming
+              <Link className="block p-2 hover:bg-blue-100" href="/trending">
+                Trending
               </Link>
             </div>
           )}
