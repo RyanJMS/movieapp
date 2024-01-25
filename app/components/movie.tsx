@@ -19,7 +19,7 @@ export default function Movie({
     >
       <div className="relative pb-12">
         <div className="flex justify-center items-center ">
-          <Link href={`/movie/${id}`}>
+          <Link href={`/movie?=${id}`} as={`/movie/${title}`}>
             <div
               style={{
                 width: "250px",

@@ -12,10 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      onMouseLeave={() => setIsDropdownOpen(false)}
-      className="bg-gray-900 py-3"
-    >
+    <nav className="bg-gray-900 py-3 mt-3">
       <div className="justify-between container group  flex items-center">
         <Link
           onMouseEnter={() => setIsDropdownOpen(false)}
@@ -26,12 +23,15 @@ export default function Navbar() {
         </Link>
 
         <button
-          onClick={toggleDropdown}
+          onClick={() => toggleDropdown()}
           className="text-white hover:text-slate-300 pl-6 text-2xl font-semibold"
         >
           ⬇️ Menu
         </button>
-        <div className="relative group inline-block">
+        <div
+          onMouseLeave={() => setIsDropdownOpen(false)}
+          className="relative group inline-block"
+        >
           {isDropdownOpen && (
             <div className="absolute z-10 mt-8 transform -translate-x-1/2 left-1/2 w-48 p-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-lg">
               <Link className="block p-2 hover:bg-blue-100" href="/">

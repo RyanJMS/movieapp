@@ -2,6 +2,7 @@ import Movie from "./components/movie";
 import "./globals.css";
 import Script from "next/script";
 import { MovieDetails } from "./interface/interface";
+import { MainCarousel } from "./components/main-carousel";
 
 export default async function Home() {
   const data = await fetch(
@@ -10,7 +11,7 @@ export default async function Home() {
   const res = await data.json();
 
   return (
-    <main className="main">
+    <>
       <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
         {res?.results?.map((movie: MovieDetails, index: number) => {
           if (movie.poster_path !== null) {
@@ -32,7 +33,8 @@ export default async function Home() {
           }
         })}
       </div>
+      {/* <MainCarousel data={res} /> */}
       <Script src="https://www.youtube.com/iframe_api" />
-    </main>
+    </>
   );
 }

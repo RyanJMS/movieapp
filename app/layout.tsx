@@ -20,7 +20,9 @@ export default function RootLayout({
       <Head />
       <body className={`bg-gray-900 text-white ${montserrat.className}`}>
         <Navbar />
-        {children}
+        <main className="flex-col min-h-screen flex-grow flex  w-full tracking-widest">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

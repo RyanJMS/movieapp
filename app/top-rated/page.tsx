@@ -1,7 +1,4 @@
-import Navbar from "../components/navbar";
 import Movie from "../components/movie";
-import Footer from "../components/footer";
-import BackLink from "../components/back-button";
 import { MovieDetails, Data } from "../interface/interface";
 export default async function TopRated() {
   const data = await fetch(

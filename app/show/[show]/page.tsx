@@ -1,17 +1,8 @@
 import Image from "next/image";
 import Cast from "../../components/actor";
-import BackLink from "../../components/back-button";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/footer";
 import Video from "../../components/video";
 import GenreTags from "@/app/components/genre-tags";
-import {
-  ActorDetails,
-  MovieDetails,
-  Props,
-  VideoDetails,
-} from "@/app/interface/interface";
-import { type } from "os";
+import { ActorDetails, Props, VideoDetails } from "@/app/interface/interface";
 import { PosterCarousel } from "@/app/components/carousel";
 
 export default async function ShowDetail({ params }: Props) {
