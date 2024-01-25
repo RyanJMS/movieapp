@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MovieDetails } from "../interface/interface";
 
-// const imagePath = "https://image.tmdb.org/t/p/w500";
+const imagePath = "https://image.tmdb.org/t/p/w500";
 
 export default function Movie({
   id,
@@ -31,8 +31,8 @@ export default function Movie({
                   poster_path !== null &&
                   poster_path !== undefined &&
                   poster_path !== ""
-                    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-                    : `https://image.tmdb.org/t/p/w500/${backdrop_path}`
+                    ? `${imagePath + poster_path}`
+                    : `${imagePath + backdrop_path}`
                 }
                 alt={title}
                 width="0"
