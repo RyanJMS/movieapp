@@ -45,7 +45,7 @@ export default function Movie({
           </Link>
         </div>
       </div>
-      <Link href={`/movie/${id}`}>
+      <Link prefetch={false} href={`/movie?=${id}`} as={`/movie/${id}`}>
         <div className="flex items-center justify-center mt-3">
           <h2 className="mr-5">
             {vote_average
