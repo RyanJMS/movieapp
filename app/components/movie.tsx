@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MovieDetails } from "../interface/interface";
 
-const imagePath = "https://image.tmdb.org/t/p/w500";
+// const imagePath = "https://image.tmdb.org/t/p/w500";
 
 export default function Movie({
   id,
@@ -19,7 +19,7 @@ export default function Movie({
     >
       <div className="relative pb-12">
         <div className="flex justify-center items-center ">
-          <Link href={`/movie?=${id}`} as={`/movie/${title}`}>
+          <Link prefetch={false} href={`/movie?=${id}`} as={`/movie/${id}`}>
             <div
               style={{
                 width: "250px",
@@ -31,8 +31,8 @@ export default function Movie({
                   poster_path !== null &&
                   poster_path !== undefined &&
                   poster_path !== ""
-                    ? imagePath + poster_path
-                    : imagePath + backdrop_path
+                    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                    : `https://image.tmdb.org/t/p/w500/${backdrop_path}`
                 }
                 alt={title}
                 width="0"
