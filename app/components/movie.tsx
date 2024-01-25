@@ -19,7 +19,7 @@ export default function Movie({
     >
       <div className="relative pb-12">
         <div className="flex justify-center items-center ">
-          <Link prefetch={false} href={`/movie?=${id}`} as={`/movie/${id}`}>
+          <Link prefetch={false} href={`/movie/${id}`}>
             <div
               style={{
                 width: "250px",
@@ -45,7 +45,7 @@ export default function Movie({
           </Link>
         </div>
       </div>
-      <Link prefetch={false} href={`/movie?=${id}`} as={`/movie/${id}`}>
+      <Link prefetch={false} href={`/movie/${id}`}>
         <div className="flex items-center justify-center mt-3">
           <h2 className="mr-5">
             {vote_average
