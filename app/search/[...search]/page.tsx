@@ -13,28 +13,28 @@ export default async function Search({ params }: Props) {
 
   let filteredResults = res?.results?.filter((data: Data) => {
     if (
-      data.media_type === "movie" ||
-      (data.media_type === undefined &&
-        data.popularity > 1 &&
-        data.poster_path !== null &&
-        data.release_date !== "")
+      (data.media_type === "movie" || data.media_type === undefined) &&
+      data.popularity > 1 &&
+      data.poster_path !== null &&
+      data.release_date !== "" &&
+      data.profile_path !== null
     )
       return true;
     if (
-      data.media_type === "tv" ||
-      (data.media_type === undefined &&
-        data.popularity > 1 &&
-        data.poster_path !== null &&
-        data.first_air_date !== "")
+      (data.media_type === "tv" || data.media_type === undefined) &&
+      data.popularity > 1 &&
+      data.poster_path !== null &&
+      data.first_air_date !== "" &&
+      data.profile_path !== null
     )
       return true;
-
-    if (data.media_type === "person" && data.profile_path !== null) return true;
   });
 
   if (filteredResults === undefined) {
     filteredResults = [];
   }
+
+  console.log(filteredResults);
 
   return (
     <div>
