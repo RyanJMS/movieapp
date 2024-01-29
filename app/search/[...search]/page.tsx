@@ -6,28 +6,39 @@ import Paginate from "../../components/paginate";
 
 export default async function Search({ params }: Props) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/search/multi?api_key=${
-      process.env.API_KEY
-    }&query=${params.search[1]}&include_adult=false&language=en-US&page=${
-      params.search[2] ?? 1
-    }`
+    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&query=${params.search[1]}&include_adult=false&page=${params.search[2]}`
   );
 
   const res = await data.json();
 
+  console.log(res);
+
   let filteredResults = res?.results?.filter((data: Data) => {
-    if (Number(params.search[1]) >= 0) {
+    if (
+      data.media_type === "movie" &&
+      data.popularity > 1 &&
+      data.poster_path !== null &&
+      data.release_date !== ""
+    )
       return true;
-    }
-    if (data.popularity > 30) {
+    if (
+      data.media_type === "tv" &&
+      data.popularity > 1 &&
+      data.poster_path !== null &&
+      data.first_air_date !== ""
+    )
       return true;
-    }
-    return false;
+
+    if (data.media_type === "person" && data.profile_path !== null) return true;
   });
+
+  if (filteredResults === undefined) {
+    filteredResults = [];
+  }
 
   return (
     <div>
-      {res?.total_results === 0 && (
+      {filteredResults.length === 0 && (
         <p className="text-2xl flex justify-center mt-20  items-center text-white">
           No Results Found...
         </p>

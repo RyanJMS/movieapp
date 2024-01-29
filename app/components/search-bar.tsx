@@ -12,7 +12,7 @@ export function SearchBar() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (query !== "") {
-      router.push(`/search/${type}/${query.trim()}/${page ?? 1}`);
+      router.push(`/search/${type}/${query.trim()}/${page === 0 ? 1 : page}`);
     }
   };
   return (
