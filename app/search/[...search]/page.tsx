@@ -11,21 +11,21 @@ export default async function Search({ params }: Props) {
 
   const res = await data.json();
 
-  console.log(res);
-
   let filteredResults = res?.results?.filter((data: Data) => {
     if (
-      data.media_type === "movie" &&
-      data.popularity > 1 &&
-      data.poster_path !== null &&
-      data.release_date !== ""
+      data.media_type === "movie" ||
+      (data.media_type === undefined &&
+        data.popularity > 1 &&
+        data.poster_path !== null &&
+        data.release_date !== "")
     )
       return true;
     if (
-      data.media_type === "tv" &&
-      data.popularity > 1 &&
-      data.poster_path !== null &&
-      data.first_air_date !== ""
+      data.media_type === "tv" ||
+      (data.media_type === undefined &&
+        data.popularity > 1 &&
+        data.poster_path !== null &&
+        data.first_air_date !== "")
     )
       return true;
 

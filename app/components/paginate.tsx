@@ -11,7 +11,7 @@ export default function Paginate({ params, total_pages }: PaginateProps) {
           href={`/${params.search ? "search" : "genre"}/${
             params.search ? params.search[0] : params.genre[0]
           }/${params.search ? params.search[1] : params.genre[1]}/${
-            currentPage - 1 !== 0 ? currentPage - 1 : currentPage
+            currentPage - 1 > 0 ? currentPage - 1 : 1
           }`}
           className={
             currentPage !== 1
