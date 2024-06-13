@@ -5,9 +5,11 @@ import Paginate from "../../components/paginate";
 
 export default async function Genre({ params }: Props) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/discover/movie/?api_key=${
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${
+      params.genre[2] ?? 1
+    }&sort_by=popularity.desc&with_genres=${params.genre[1]}&api_key=${
       process.env.API_KEY
-    }&with_genres=${params.genre[1]}&page=${params.genre[2] ?? 1}`
+    }`
   );
 
   const res = await data.json();

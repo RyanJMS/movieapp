@@ -6,7 +6,7 @@ import Paginate from "../../components/paginate";
 
 export default async function Search({ params }: Props) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&query=${params.search[1]}&include_adult=false&page=${params.search[2]}`
+    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&query=${params.search[1]}&include_adult=false&page=${params.search[2]}&sort_by=popularity.desc`
   );
 
   const res = await data.json();
