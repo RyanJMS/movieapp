@@ -31,7 +31,7 @@ export default async function Actor({ params }: Props) {
       <h1 className="text-2xl sm:text-2xl xs:text-2xl mt-4 mb-4 text-center">
         {actorRes?.results[0].name}
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
+      <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
         {sorted?.map((data: Data, index: number) => {
           // const loadingType = index < 6 ? "eager" : "lazy";
           {
