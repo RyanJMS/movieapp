@@ -51,6 +51,7 @@ export default async function Actor({ params }: Props) {
                       original_language={data.original_language}
                       status={data.status}
                       name={data.name}
+                      character={data.character}
                       // loadingType={loadingType}
                     />
                   );
@@ -67,6 +68,7 @@ export default async function Actor({ params }: Props) {
                       poster_path={data.poster_path}
                       first_air_date={data.first_air_date}
                       vote_average={data.vote_average}
+                      character={data.character}
                       // loadingType={loadingType}
                     />
                   );

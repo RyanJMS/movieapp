@@ -34,8 +34,6 @@ export default async function Search({ params }: Props) {
     filteredResults = [];
   }
 
-  console.log(filteredResults);
-
   return (
     <div>
       {filteredResults.length === 0 && (

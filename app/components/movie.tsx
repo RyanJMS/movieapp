@@ -11,6 +11,7 @@ export default function Movie({
   release_date,
   vote_average,
   backdrop_path,
+  character,
 }: MovieDetails) {
   return (
     <div
@@ -56,6 +57,7 @@ export default function Movie({
         </div>
         <h1 className=" text-xl sm:text-2xl xs:text-2xl truncate">{title}</h1>
       </Link>
+      {character && <p>({character})</p>}
     </div>
   );
 }

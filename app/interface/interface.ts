@@ -9,6 +9,7 @@ export interface MovieDetails {
   title: string;
   vote_average: number;
   original_language: string;
+  character?: string;
 }
 
 export interface ShowDetails {
@@ -18,6 +19,7 @@ export interface ShowDetails {
   first_air_date: string;
   media_type: string;
   vote_average: number;
+  character?: string;
 }
 
 export interface ActorDetails {

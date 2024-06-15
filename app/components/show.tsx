@@ -11,6 +11,7 @@ export default function Show({
   media_type,
   first_air_date,
   vote_average,
+  character,
 }: // loadingType,
 ShowDetails) {
   return (
@@ -52,6 +53,7 @@ ShowDetails) {
         </div>
         <h1 className="text-xl sm:text-2xl xs:text-2xl">{name}</h1>
       </Link>
+      {character && <p>({character})</p>}
     </div>
   );
 }

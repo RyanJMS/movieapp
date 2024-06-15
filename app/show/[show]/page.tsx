@@ -24,7 +24,7 @@ export default async function ShowDetail({ params }: Props) {
   );
 
   const similar = await fetch(
-    `https://api.themoviedb.org/3/tv/${params.show}/similar?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/tv/${params.show}/recommendations?language=en-US&page=1&api_key=${process.env.API_KEY}`
   );
 
   const similarData = await similar.json();
