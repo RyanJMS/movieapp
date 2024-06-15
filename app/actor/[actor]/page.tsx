@@ -1,31 +1,11 @@
 import Movie from "../../components/movie";
-
 import Show from "../../components/show";
-import { ActorDetails, Data } from "@/app/interface/interface";
-
-interface Props {
-  params: {
-    actor: string;
-  };
-}
+import { Props, Data } from "@/app/interface/interface";
+import { getActorData } from "@/app/actions/actor-routes";
 
 export default async function Actor({ params }: Props) {
-  const actorData = await fetch(
-    `http://api.tmdb.org/3/search/person?api_key=${process.env.API_KEY}&query=${params.actor}`
-  );
-
-  const actorRes = await actorData.json();
-
-  const filmData = await fetch(
-    `https://api.themoviedb.org/3/person/${actorRes.results[0].id}/combined_credits?api_key=${process.env.API_KEY}
-    `
-  );
-  const filmRes = await filmData.json();
-
-  const sorted = filmRes?.cast?.sort(
-    (a: Data, b: Data) => b.popularity - a.popularity
-  );
-
+  const res = await getActorData(params.actor);
+  const [actorRes, sorted] = res;
   return (
     <div>
       <h1 className="text-2xl sm:text-2xl xs:text-2xl mt-4 mb-4 text-center">

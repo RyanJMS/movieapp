@@ -1,48 +1,18 @@
 import Image from "next/image";
 import Cast from "../../components/actor";
 import Video from "../../components/video";
-import {
-  VideoDetails,
-  Props,
-  MovieDetails,
-  ActorDetails,
-} from "@/app/interface/interface";
+import { Props, ActorDetails } from "@/app/interface/interface";
 import GenreTags from "@/app/components/genre-tags";
 import { PosterCarousel } from "../../components/carousel";
 import Rating from "@/app/components/rating";
+import { getMovieData } from "@/app/actions/movie-routes";
 
 export default async function MovieDetail({ params }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
-  const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}?api_key=${process.env.API_KEY}`,
-    { next: { revalidate: 0 } }
-  );
-  const res = await data.json();
+  const movieData = await getMovieData(params.movie);
 
-  const castData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}/credits?api_key=${process.env.API_KEY}&language=en-US`
-  );
-  const castRes = await castData.json();
-
-  const videoData = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}/videos?api_key=${process.env.API_KEY}&language=en-US`
-  );
-
-  const videoRes = await videoData.json();
-
-  const trailerList = videoRes?.results;
-
-  const trailer = trailerList?.filter(
-    (video: VideoDetails) =>
-      video.type === "Trailer" ||
-      (video.type === "Teaser" && video.official === true)
-  );
-
-  const similar = await fetch(
-    `https://api.themoviedb.org/3/movie/${params.movie}/recommendations?language=en-US&page=1&api_key=${process.env.API_KEY}`
-  );
-  const similarData = await similar.json();
+  const [res, castRes, trailer, similarData] = movieData;
 
   return (
     <div className=" container sm:text-2xl xs:text-2xl mx-auto leading-10 mt-10 mb-10 w-full">
@@ -65,6 +35,7 @@ export default async function MovieDetail({ params }: Props) {
           <GenreTags genres={res?.genres} />
         </div>
         <div
+          className="my-10"
           style={{
             overflow: "hidden",
           }}

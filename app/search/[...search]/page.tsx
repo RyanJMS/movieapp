@@ -1,54 +1,32 @@
 import Movie from "../../components/movie";
 import Show from "../../components/show";
 import Actor from "../../components/actor";
-import { Data, Props } from "../../interface/interface";
 import Paginate from "../../components/paginate";
+import { getResults } from "@/app/actions/search-route";
+import { Props, Data } from "@/app/interface/interface";
 
 export default async function Search({ params }: Props) {
-  const data = await fetch(
-    `https://api.themoviedb.org/3/search/${params.search[0]}?api_key=${process.env.API_KEY}&query=${params.search[1]}&include_adult=false&page=${params.search[2]}&sort_by=popularity.desc`
+  const res = await getResults(
+    params.search[0],
+    params.search[1],
+    params.search[2]
   );
-
-  const res = await data.json();
-
-  let filteredResults = res?.results?.filter((data: Data) => {
-    if (
-      (data.media_type === "movie" || data.media_type === undefined) &&
-      data.popularity > 1 &&
-      data.poster_path !== null &&
-      data.release_date !== "" &&
-      data.profile_path !== null
-    )
-      return true;
-    if (
-      (data.media_type === "tv" || data.media_type === undefined) &&
-      data.popularity > 1 &&
-      data.poster_path !== null &&
-      data.first_air_date !== "" &&
-      data.profile_path !== null
-    )
-      return true;
-  });
-
-  if (filteredResults === undefined) {
-    filteredResults = [];
-  }
 
   return (
     <div>
-      {filteredResults.length === 0 && (
+      {res[0].length === 0 && (
         <p className="text-2xl flex justify-center mt-20  items-center text-white">
           No Results Found...
         </p>
       )}
       <div
         className={
-          filteredResults.length >= 4
+          res[0].length >= 4
             ? "grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6"
             : `flex justify-center`
         }
       >
-        {filteredResults
+        {res[0]
           .sort((a: Data, b: Data) => b.popularity - a.popularity)
           .map((data: Data, index: number) => {
             return (
@@ -91,7 +69,7 @@ export default async function Search({ params }: Props) {
           })}{" "}
       </div>
 
-      <Paginate params={params} total_pages={res.total_pages} />
+      <Paginate params={params} total_pages={res[1]} />
     </div>
   );
 }
