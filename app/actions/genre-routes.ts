@@ -7,6 +7,7 @@ export const getGenreData = async (genre: string, page: string) => {
     }`
   );
 
+
   const res = await data.json();
   return res;
 };

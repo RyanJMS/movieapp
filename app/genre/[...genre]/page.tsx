@@ -15,7 +15,7 @@ export default async function Genre({ params }: Props) {
         </p>
       )}
       <>
-        <h1 className="text-4xl text-center my-6">{params.genre[0]}</h1>
+        <h1 className="text-4xl text-center my-6">{params.genre[0].replaceAll("-", " ")}</h1>
         <div className="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
           {res?.results
             ?.filter((data: Data) => {
