@@ -1,4 +1,4 @@
-import { PaginateProps } from "../interface/interface";
+import { PaginateProps } from "../interface";
 import Link from "next/link";
 
 export default function Paginate({ params, total_pages }: PaginateProps) {

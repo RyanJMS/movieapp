@@ -1,5 +1,5 @@
 import Movie from "../components/movie";
-import { MovieDetails, Data } from "../interface/interface";
+import { MovieDetails, Data } from "../interface";
 export default async function Trending() {
   const data = await fetch(
     ` https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US&page=1`

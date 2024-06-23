@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { CarouselProps } from "../interface/interface";
+import { CarouselProps } from "../interface";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {

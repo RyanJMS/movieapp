@@ -2,7 +2,7 @@ import Image from "next/image";
 import Cast from "../../components/actor";
 import Video from "../../components/video";
 import GenreTags from "@/app/components/genre-tags";
-import { ActorDetails, Props } from "@/app/interface/interface";
+import { ActorDetails, Props } from "@/app/interface";
 import { PosterCarousel } from "@/app/components/carousel";
 import { getShowData } from "@/app/actions/show-routes";
 

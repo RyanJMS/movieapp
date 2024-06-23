@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import Image from "next/image";
-import { VideoProps } from "../interface/interface";
+import { VideoProps } from "../interface";
 
 const Video = ({ url, imagePath }: VideoProps) => {
   const [isMuted, setIsMuted] = useState(true);
@@ -17,7 +17,7 @@ const Video = ({ url, imagePath }: VideoProps) => {
   };
 
   const togglePlay = () => {
-    setIsPlaying(true);
+    setIsPlaying((prev) => !prev);
   };
 
   const handleVideoError = () => {
@@ -25,7 +25,11 @@ const Video = ({ url, imagePath }: VideoProps) => {
   };
 
   return (
-    <div className="youtube-container" onMouseEnter={togglePlay}>
+    <div
+      className="youtube-container"
+      onMouseEnter={() => setTimeout(() => togglePlay(), 3000)}
+      onMouseLeave={() => togglePlay()}
+    >
       {videoUnavailable ? (
         <Image
           src={imagePath}

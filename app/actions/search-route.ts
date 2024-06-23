@@ -1,4 +1,4 @@
-import { Props, Data } from "../interface/interface";
+import { Props, Data } from "../interface";
 
 export const getResults = async (type: string, query: string, page: string) => {
   const data = await fetch(

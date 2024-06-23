@@ -1,6 +1,6 @@
 import Movie from "../../components/movie";
 import Show from "@/app/components/show";
-import { Data, Props } from "../../interface/interface";
+import { Data, Props } from "../../interface";
 import Paginate from "../../components/paginate";
 import { getGenreData } from "@/app/actions/genre-routes";
 
@@ -16,7 +16,7 @@ export default async function Genre({ params }: Props) {
       )}
       <>
         <h1 className="text-4xl text-center my-6">{params.genre[0]}</h1>
-        <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
+        <div className="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
           {res?.results
             ?.filter((data: Data) => {
               if (Number(params.genre[1]) >= 0) {

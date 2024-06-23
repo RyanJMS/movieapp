@@ -1,6 +1,6 @@
 "use client";
 
-import { Genres, Genre } from "../interface/interface";
+import { Genres, Genre } from "../interface";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 

@@ -3,7 +3,7 @@ import Show from "../../components/show";
 import Actor from "../../components/actor";
 import Paginate from "../../components/paginate";
 import { getResults } from "@/app/actions/search-route";
-import { Props, Data } from "@/app/interface/interface";
+import { Props, Data } from "@/app/interface";
 
 export default async function Search({ params }: Props) {
   const res = await getResults(
@@ -22,7 +22,7 @@ export default async function Search({ params }: Props) {
       <div
         className={
           res[0].length >= 4
-            ? "grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6"
+            ? "grid container sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mx-auto  mt-6 mb-6"
             : `flex justify-center`
         }
       >

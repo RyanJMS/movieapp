@@ -1,4 +1,4 @@
-import { Props, Data } from "../interface/interface";
+import { Props, Data } from "../interface";
 
 export const getActorData = async (actor: string) => {
   const actorData = await fetch(

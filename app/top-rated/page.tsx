@@ -1,5 +1,5 @@
 import Movie from "../components/movie";
-import { MovieDetails, Data } from "../interface/interface";
+import { MovieDetails, Data } from "../interface";
 export default async function TopRated() {
   const data = await fetch(
     ` https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`
@@ -8,7 +8,7 @@ export default async function TopRated() {
 
   return (
     <>
-      <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
+      <div className="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto  mt-6 mb-6">
         {res?.results
           ?.sort((a: Data, b: Data) => b.popularity - a.popularity)
           ?.map((movie: MovieDetails, index: number) => {

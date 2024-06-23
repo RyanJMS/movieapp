@@ -1,5 +1,5 @@
 import Movie from "../components/movie";
-import { MovieDetails } from "../interface/interface";
+import { MovieDetails } from "../interface";
 export default async function Upcoming() {
   const data = await fetch(
     ` https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US&page=1`
@@ -8,7 +8,7 @@ export default async function Upcoming() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 mx-auto mt-6 mb-6">
         {res?.results?.map((movie: MovieDetails, index: number) => {
           // const loadingType = index < 5 ? "eager" : "lazy";
 

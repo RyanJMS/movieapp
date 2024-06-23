@@ -2,7 +2,7 @@ import * as React from "react";
 import Movie from "./movie";
 import Show from "./show";
 import { Card, CardContent } from "@/components/ui/card";
-import { Data, CarouselProps } from "../interface/interface";
+import { Data, CarouselProps } from "../interface";
 import {
   Carousel,
   CarouselContent,

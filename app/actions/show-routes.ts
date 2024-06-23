@@ -1,4 +1,4 @@
-import { VideoDetails } from "../interface/interface";
+import { VideoDetails } from "../interface";
 
 export const getShowData = async (show: string) => {
   const data = await fetch(

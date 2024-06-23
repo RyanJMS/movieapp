@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ShowDetails } from "../interface/interface";
+import { ShowDetails } from "../interface";
 
 const imagePath = "https://image.tmdb.org/t/p/w500";
 
@@ -16,7 +16,7 @@ export default function Show({
 ShowDetails) {
   return (
     <div
-      className="group text-center mx-2 my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
+      className="group text-center  my-10 hover:translate-y-[-15px] transition-transform duration-300 ease-in-out"
       style={{ width: "300px", height: "500px" }}
     >
       <div className="relative pb-12">
